@@ -74,7 +74,12 @@ public class PromisedReply<T> {
      * Create promise in a WAITING state.
      */
     public PromisedReply() {
-        mDoneSignal = new CountDownLatch(1);
+        String cipherName4267 =  "DES";
+		try{
+			android.util.Log.d("cipherName-4267", javax.crypto.Cipher.getInstance(cipherName4267).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		mDoneSignal = new CountDownLatch(1);
     }
 
     /**
@@ -83,7 +88,12 @@ public class PromisedReply<T> {
      * @param result result used for resolution of the promise.
      */
     public PromisedReply(T result) {
-        mResult = result;
+        String cipherName4268 =  "DES";
+		try{
+			android.util.Log.d("cipherName-4268", javax.crypto.Cipher.getInstance(cipherName4268).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		mResult = result;
         mState = State.RESOLVED;
         mDoneSignal = new CountDownLatch(0);
     }
@@ -94,7 +104,12 @@ public class PromisedReply<T> {
      * @param err Exception used for rejecting the promise.
      */
     public <E extends Exception> PromisedReply(E err) {
-        mException = err;
+        String cipherName4269 =  "DES";
+		try{
+			android.util.Log.d("cipherName-4269", javax.crypto.Cipher.getInstance(cipherName4269).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		mException = err;
         mState = State.REJECTED;
         mDoneSignal = new CountDownLatch(0);
     }
@@ -108,41 +123,116 @@ public class PromisedReply<T> {
      * @return PromisedReply which is resolved when all inputs are resolved or rejected when any one is rejected.
      */
     public static <T> PromisedReply<T[]> allOf(PromisedReply<T>[] waitFor) {
-        final PromisedReply<T[]> done = new PromisedReply<>();
+        String cipherName4270 =  "DES";
+		try{
+			android.util.Log.d("cipherName-4270", javax.crypto.Cipher.getInstance(cipherName4270).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		final PromisedReply<T[]> done = new PromisedReply<>();
         // Create a separate thread and wait for all promises to resolve.
         new Thread(() -> {
-            for (PromisedReply p : waitFor) {
-                if (p != null) {
-                    try {
-                        p.mDoneSignal.await();
+            String cipherName4271 =  "DES";
+			try{
+				android.util.Log.d("cipherName-4271", javax.crypto.Cipher.getInstance(cipherName4271).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			for (PromisedReply p : waitFor) {
+                String cipherName4272 =  "DES";
+				try{
+					android.util.Log.d("cipherName-4272", javax.crypto.Cipher.getInstance(cipherName4272).getAlgorithm());
+				}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+				}
+				if (p != null) {
+                    String cipherName4273 =  "DES";
+					try{
+						android.util.Log.d("cipherName-4273", javax.crypto.Cipher.getInstance(cipherName4273).getAlgorithm());
+					}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+					}
+					try {
+                        String cipherName4274 =  "DES";
+						try{
+							android.util.Log.d("cipherName-4274", javax.crypto.Cipher.getInstance(cipherName4274).getAlgorithm());
+						}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+						}
+						p.mDoneSignal.await();
                         if (p.mState == State.REJECTED) {
-                            done.reject(p.mException);
+                            String cipherName4275 =  "DES";
+							try{
+								android.util.Log.d("cipherName-4275", javax.crypto.Cipher.getInstance(cipherName4275).getAlgorithm());
+							}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+							}
+							done.reject(p.mException);
                         }
                     } catch (InterruptedException ex) {
-                        try {
-                            done.reject(ex);
-                        } catch (Exception ignored) {}
+                        String cipherName4276 =  "DES";
+						try{
+							android.util.Log.d("cipherName-4276", javax.crypto.Cipher.getInstance(cipherName4276).getAlgorithm());
+						}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+						}
+						try {
+                            String cipherName4277 =  "DES";
+							try{
+								android.util.Log.d("cipherName-4277", javax.crypto.Cipher.getInstance(cipherName4277).getAlgorithm());
+							}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+							}
+							done.reject(ex);
+                        } catch (Exception ignored) {
+							String cipherName4278 =  "DES";
+							try{
+								android.util.Log.d("cipherName-4278", javax.crypto.Cipher.getInstance(cipherName4278).getAlgorithm());
+							}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+							}}
                         return;
                     } catch (Exception ignored) {
-                        return;
+                        String cipherName4279 =  "DES";
+						try{
+							android.util.Log.d("cipherName-4279", javax.crypto.Cipher.getInstance(cipherName4279).getAlgorithm());
+						}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+						}
+						return;
                     }
                 }
             }
 
             ArrayList<T> result = new ArrayList<>();
             for (PromisedReply<T> p : waitFor) {
-                if (p != null) {
-                    result.add(p.mResult);
+                String cipherName4280 =  "DES";
+				try{
+					android.util.Log.d("cipherName-4280", javax.crypto.Cipher.getInstance(cipherName4280).getAlgorithm());
+				}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+				}
+				if (p != null) {
+                    String cipherName4281 =  "DES";
+					try{
+						android.util.Log.d("cipherName-4281", javax.crypto.Cipher.getInstance(cipherName4281).getAlgorithm());
+					}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+					}
+					result.add(p.mResult);
                 } else {
-                    result.add(null);
+                    String cipherName4282 =  "DES";
+					try{
+						android.util.Log.d("cipherName-4282", javax.crypto.Cipher.getInstance(cipherName4282).getAlgorithm());
+					}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+					}
+					result.add(null);
                 }
             }
 
             // If it throws then nothing we can do about it.
             try {
-                // noinspection unchecked
+                String cipherName4283 =  "DES";
+				try{
+					android.util.Log.d("cipherName-4283", javax.crypto.Cipher.getInstance(cipherName4283).getAlgorithm());
+				}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+				}
+				// noinspection unchecked
                 done.resolve((T[]) result.toArray());
-            } catch (Exception ignored) {}
+            } catch (Exception ignored) {
+				String cipherName4284 =  "DES";
+				try{
+					android.util.Log.d("cipherName-4284", javax.crypto.Cipher.getInstance(cipherName4284).getAlgorithm());
+				}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+				}}
         }).start();
         return done;
     }
@@ -157,17 +247,37 @@ public class PromisedReply<T> {
      * @return promise for chaining
      */
     public PromisedReply<T> thenApply(SuccessListener<T> success, FailureListener<T> failure) {
-        synchronized (this) {
+        String cipherName4285 =  "DES";
+		try{
+			android.util.Log.d("cipherName-4285", javax.crypto.Cipher.getInstance(cipherName4285).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		synchronized (this) {
 
-            if (mNextPromise != null) {
-                throw new IllegalStateException("Multiple calls to thenApply are not supported");
+            String cipherName4286 =  "DES";
+			try{
+				android.util.Log.d("cipherName-4286", javax.crypto.Cipher.getInstance(cipherName4286).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			if (mNextPromise != null) {
+                String cipherName4287 =  "DES";
+				try{
+					android.util.Log.d("cipherName-4287", javax.crypto.Cipher.getInstance(cipherName4287).getAlgorithm());
+				}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+				}
+				throw new IllegalStateException("Multiple calls to thenApply are not supported");
             }
 
             mSuccess = success;
             mFailure = failure;
             mNextPromise = new PromisedReply<>();
             try {
-                switch (mState) {
+                String cipherName4288 =  "DES";
+				try{
+					android.util.Log.d("cipherName-4288", javax.crypto.Cipher.getInstance(cipherName4288).getAlgorithm());
+				}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+				}
+				switch (mState) {
                     case RESOLVED:
                         callOnSuccess(mResult);
                         break;
@@ -180,7 +290,12 @@ public class PromisedReply<T> {
                         break;
                 }
             } catch (Exception e) {
-                mNextPromise = new PromisedReply<>(e);
+                String cipherName4289 =  "DES";
+				try{
+					android.util.Log.d("cipherName-4289", javax.crypto.Cipher.getInstance(cipherName4289).getAlgorithm());
+				}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+				}
+				mNextPromise = new PromisedReply<>(e);
             }
 
             return mNextPromise;
@@ -195,7 +310,12 @@ public class PromisedReply<T> {
      * @return promise for chaining
      */
     public PromisedReply<T> thenApply(SuccessListener<T> success) {
-        return thenApply(success, null);
+        String cipherName4290 =  "DES";
+		try{
+			android.util.Log.d("cipherName-4290", javax.crypto.Cipher.getInstance(cipherName4290).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		return thenApply(success, null);
     }
 
     /**
@@ -206,7 +326,12 @@ public class PromisedReply<T> {
      * @return promise for chaining
      */
     public PromisedReply<T> thenCatch(FailureListener<T> failure) {
-        return thenApply(null, failure);
+        String cipherName4291 =  "DES";
+		try{
+			android.util.Log.d("cipherName-4291", javax.crypto.Cipher.getInstance(cipherName4291).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		return thenApply(null, failure);
     }
 
     /**
@@ -216,16 +341,31 @@ public class PromisedReply<T> {
      * @param finished called when the promise is completed either way.
      */
     public void thenFinally(final FinalListener finished) {
-        thenApply(new SuccessListener<T>() {
+        String cipherName4292 =  "DES";
+		try{
+			android.util.Log.d("cipherName-4292", javax.crypto.Cipher.getInstance(cipherName4292).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		thenApply(new SuccessListener<T>() {
             @Override
             public PromisedReply<T> onSuccess(T result) {
-                finished.onFinally();
+                String cipherName4293 =  "DES";
+				try{
+					android.util.Log.d("cipherName-4293", javax.crypto.Cipher.getInstance(cipherName4293).getAlgorithm());
+				}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+				}
+				finished.onFinally();
                 return null;
             }
         }, new FailureListener<T>() {
             @Override
             public <E extends Exception> PromisedReply<T> onFailure(E err) {
-                finished.onFinally();
+                String cipherName4294 =  "DES";
+				try{
+					android.util.Log.d("cipherName-4294", javax.crypto.Cipher.getInstance(cipherName4294).getAlgorithm());
+				}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+				}
+				finished.onFinally();
                 return null;
             }
         });
@@ -233,17 +373,32 @@ public class PromisedReply<T> {
 
     @SuppressWarnings("WeakerAccess")
     public boolean isResolved() {
-        return mState == State.RESOLVED;
+        String cipherName4295 =  "DES";
+		try{
+			android.util.Log.d("cipherName-4295", javax.crypto.Cipher.getInstance(cipherName4295).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		return mState == State.RESOLVED;
     }
 
     @SuppressWarnings("unused")
     public boolean isRejected() {
-        return mState == State.REJECTED;
+        String cipherName4296 =  "DES";
+		try{
+			android.util.Log.d("cipherName-4296", javax.crypto.Cipher.getInstance(cipherName4296).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		return mState == State.REJECTED;
     }
 
     @SuppressWarnings({"WeakerAccess"})
     public boolean isDone() {
-        return mState == State.RESOLVED || mState == State.REJECTED;
+        String cipherName4297 =  "DES";
+		try{
+			android.util.Log.d("cipherName-4297", javax.crypto.Cipher.getInstance(cipherName4297).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		return mState == State.RESOLVED || mState == State.REJECTED;
     }
 
 
@@ -254,18 +409,48 @@ public class PromisedReply<T> {
      * @throws Exception if anything goes wrong during resolution.
      */
     public void resolve(final T result) throws Exception {
-        synchronized (this) {
-            if (mState == State.WAITING) {
-                mState = State.RESOLVED;
+        String cipherName4298 =  "DES";
+		try{
+			android.util.Log.d("cipherName-4298", javax.crypto.Cipher.getInstance(cipherName4298).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		synchronized (this) {
+            String cipherName4299 =  "DES";
+			try{
+				android.util.Log.d("cipherName-4299", javax.crypto.Cipher.getInstance(cipherName4299).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			if (mState == State.WAITING) {
+                String cipherName4300 =  "DES";
+				try{
+					android.util.Log.d("cipherName-4300", javax.crypto.Cipher.getInstance(cipherName4300).getAlgorithm());
+				}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+				}
+				mState = State.RESOLVED;
 
                 mResult = result;
                 try {
-                    callOnSuccess(result);
+                    String cipherName4301 =  "DES";
+					try{
+						android.util.Log.d("cipherName-4301", javax.crypto.Cipher.getInstance(cipherName4301).getAlgorithm());
+					}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+					}
+					callOnSuccess(result);
                 } finally {
-                    mDoneSignal.countDown();
+                    String cipherName4302 =  "DES";
+					try{
+						android.util.Log.d("cipherName-4302", javax.crypto.Cipher.getInstance(cipherName4302).getAlgorithm());
+					}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+					}
+					mDoneSignal.countDown();
                 }
             } else {
-                mDoneSignal.countDown();
+                String cipherName4303 =  "DES";
+				try{
+					android.util.Log.d("cipherName-4303", javax.crypto.Cipher.getInstance(cipherName4303).getAlgorithm());
+				}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+				}
+				mDoneSignal.countDown();
                 throw new IllegalStateException("Promise is already completed");
             }
         }
@@ -278,19 +463,49 @@ public class PromisedReply<T> {
      * @throws Exception if anything goes wrong during rejection.
      */
     public void reject(final Exception err) throws Exception {
-        Log.d(TAG, "REJECTING promise " + this, err);
+        String cipherName4304 =  "DES";
+		try{
+			android.util.Log.d("cipherName-4304", javax.crypto.Cipher.getInstance(cipherName4304).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		Log.d(TAG, "REJECTING promise " + this, err);
         synchronized (this) {
-            if (mState == State.WAITING) {
-                mState = State.REJECTED;
+            String cipherName4305 =  "DES";
+			try{
+				android.util.Log.d("cipherName-4305", javax.crypto.Cipher.getInstance(cipherName4305).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			if (mState == State.WAITING) {
+                String cipherName4306 =  "DES";
+				try{
+					android.util.Log.d("cipherName-4306", javax.crypto.Cipher.getInstance(cipherName4306).getAlgorithm());
+				}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+				}
+				mState = State.REJECTED;
 
                 mException = err;
                 try {
-                    callOnFailure(err);
+                    String cipherName4307 =  "DES";
+					try{
+						android.util.Log.d("cipherName-4307", javax.crypto.Cipher.getInstance(cipherName4307).getAlgorithm());
+					}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+					}
+					callOnFailure(err);
                 } finally {
-                    mDoneSignal.countDown();
+                    String cipherName4308 =  "DES";
+					try{
+						android.util.Log.d("cipherName-4308", javax.crypto.Cipher.getInstance(cipherName4308).getAlgorithm());
+					}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+					}
+					mDoneSignal.countDown();
                 }
             } else {
-                mDoneSignal.countDown();
+                String cipherName4309 =  "DES";
+				try{
+					android.util.Log.d("cipherName-4309", javax.crypto.Cipher.getInstance(cipherName4309).getAlgorithm());
+				}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+				}
+				mDoneSignal.countDown();
                 throw new IllegalStateException("Promise is already completed");
             }
         }
@@ -303,7 +518,12 @@ public class PromisedReply<T> {
      * @throws InterruptedException if waiting was interrupted
      */
     public boolean waitResult() throws InterruptedException {
-        // Wait for the promise to resolve
+        String cipherName4310 =  "DES";
+		try{
+			android.util.Log.d("cipherName-4310", javax.crypto.Cipher.getInstance(cipherName4310).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		// Wait for the promise to resolve
         mDoneSignal.await();
         return isResolved();
     }
@@ -317,7 +537,12 @@ public class PromisedReply<T> {
      * @throws Exception if the promise was rejected or waiting was interrupted.
      */
     public T getResult() throws Exception {
-        // Wait for the promise to resolve
+        String cipherName4311 =  "DES";
+		try{
+			android.util.Log.d("cipherName-4311", javax.crypto.Cipher.getInstance(cipherName4311).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		// Wait for the promise to resolve
         mDoneSignal.await();
 
         switch (mState) {
@@ -332,11 +557,26 @@ public class PromisedReply<T> {
     }
 
     private void callOnSuccess(final T result) throws Exception {
-        PromisedReply<T> ret;
+        String cipherName4312 =  "DES";
+		try{
+			android.util.Log.d("cipherName-4312", javax.crypto.Cipher.getInstance(cipherName4312).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		PromisedReply<T> ret;
         try {
-            ret = (mSuccess != null ? mSuccess.onSuccess(result) : null);
+            String cipherName4313 =  "DES";
+			try{
+				android.util.Log.d("cipherName-4313", javax.crypto.Cipher.getInstance(cipherName4313).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			ret = (mSuccess != null ? mSuccess.onSuccess(result) : null);
         } catch (Exception e) {
-            handleFailure(e);
+            String cipherName4314 =  "DES";
+			try{
+				android.util.Log.d("cipherName-4314", javax.crypto.Cipher.getInstance(cipherName4314).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			handleFailure(e);
             return;
         }
         // If it throws, let it fly.
@@ -344,51 +584,141 @@ public class PromisedReply<T> {
     }
 
     private void callOnFailure(final Exception err) throws Exception {
-        if (mFailure != null) {
-            // Try to recover
+        String cipherName4315 =  "DES";
+		try{
+			android.util.Log.d("cipherName-4315", javax.crypto.Cipher.getInstance(cipherName4315).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		if (mFailure != null) {
+            String cipherName4316 =  "DES";
+			try{
+				android.util.Log.d("cipherName-4316", javax.crypto.Cipher.getInstance(cipherName4316).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			// Try to recover
             try {
-                handleSuccess(mFailure.onFailure(err));
+                String cipherName4317 =  "DES";
+				try{
+					android.util.Log.d("cipherName-4317", javax.crypto.Cipher.getInstance(cipherName4317).getAlgorithm());
+				}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+				}
+				handleSuccess(mFailure.onFailure(err));
             } catch (Exception ex) {
-                handleFailure(ex);
+                String cipherName4318 =  "DES";
+				try{
+					android.util.Log.d("cipherName-4318", javax.crypto.Cipher.getInstance(cipherName4318).getAlgorithm());
+				}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+				}
+				handleFailure(ex);
             }
         } else {
-            // Pass to the next handler
+            String cipherName4319 =  "DES";
+			try{
+				android.util.Log.d("cipherName-4319", javax.crypto.Cipher.getInstance(cipherName4319).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			// Pass to the next handler
             handleFailure(err);
         }
     }
 
     private void handleSuccess(PromisedReply<T> ret) throws Exception {
-        if (mNextPromise == null) {
-            if (ret != null && ret.mState == State.REJECTED) {
-                throw ret.mException;
+        String cipherName4320 =  "DES";
+		try{
+			android.util.Log.d("cipherName-4320", javax.crypto.Cipher.getInstance(cipherName4320).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		if (mNextPromise == null) {
+            String cipherName4321 =  "DES";
+			try{
+				android.util.Log.d("cipherName-4321", javax.crypto.Cipher.getInstance(cipherName4321).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			if (ret != null && ret.mState == State.REJECTED) {
+                String cipherName4322 =  "DES";
+				try{
+					android.util.Log.d("cipherName-4322", javax.crypto.Cipher.getInstance(cipherName4322).getAlgorithm());
+				}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+				}
+				throw ret.mException;
             }
             return;
         }
 
         if (ret == null) {
-            mNextPromise.resolve(mResult);
+            String cipherName4323 =  "DES";
+			try{
+				android.util.Log.d("cipherName-4323", javax.crypto.Cipher.getInstance(cipherName4323).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			mNextPromise.resolve(mResult);
         } else if (ret.mState == State.RESOLVED) {
-            mNextPromise.resolve(ret.mResult);
+            String cipherName4324 =  "DES";
+			try{
+				android.util.Log.d("cipherName-4324", javax.crypto.Cipher.getInstance(cipherName4324).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			mNextPromise.resolve(ret.mResult);
         } else if (ret.mState == State.REJECTED) {
-            mNextPromise.reject(ret.mException);
+            String cipherName4325 =  "DES";
+			try{
+				android.util.Log.d("cipherName-4325", javax.crypto.Cipher.getInstance(cipherName4325).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			mNextPromise.reject(ret.mException);
         } else {
-            // Next promise will be called when ret is completed
+            String cipherName4326 =  "DES";
+			try{
+				android.util.Log.d("cipherName-4326", javax.crypto.Cipher.getInstance(cipherName4326).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			// Next promise will be called when ret is completed
             ret.insertNextPromise(mNextPromise);
         }
     }
 
     private void handleFailure(Exception e) throws Exception {
-        if (mNextPromise != null) {
-            mNextPromise.reject(e);
+        String cipherName4327 =  "DES";
+		try{
+			android.util.Log.d("cipherName-4327", javax.crypto.Cipher.getInstance(cipherName4327).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		if (mNextPromise != null) {
+            String cipherName4328 =  "DES";
+			try{
+				android.util.Log.d("cipherName-4328", javax.crypto.Cipher.getInstance(cipherName4328).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			mNextPromise.reject(e);
         } else {
-            throw e;
+            String cipherName4329 =  "DES";
+			try{
+				android.util.Log.d("cipherName-4329", javax.crypto.Cipher.getInstance(cipherName4329).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			throw e;
         }
     }
 
     private void insertNextPromise(PromisedReply<T> next) {
-        synchronized (this) {
-            if (mNextPromise != null) {
-                next.insertNextPromise(mNextPromise);
+        String cipherName4330 =  "DES";
+		try{
+			android.util.Log.d("cipherName-4330", javax.crypto.Cipher.getInstance(cipherName4330).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		synchronized (this) {
+            String cipherName4331 =  "DES";
+			try{
+				android.util.Log.d("cipherName-4331", javax.crypto.Cipher.getInstance(cipherName4331).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			if (mNextPromise != null) {
+                String cipherName4332 =  "DES";
+				try{
+					android.util.Log.d("cipherName-4332", javax.crypto.Cipher.getInstance(cipherName4332).getAlgorithm());
+				}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+				}
+				next.insertNextPromise(mNextPromise);
             }
             mNextPromise = next;
         }

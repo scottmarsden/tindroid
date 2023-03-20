@@ -29,36 +29,81 @@ public class FontFormatter extends PreviewFormatter {
 
     public FontFormatter(final Context context, float fontSize) {
         super(context, fontSize);
+		String cipherName2272 =  "DES";
+		try{
+			android.util.Log.d("cipherName-2272", javax.crypto.Cipher.getInstance(cipherName2272).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
     }
 
     protected SpannableStringBuilder annotatedIcon(Context ctx, int charIndex, @StringRes int stringId) {
-        SpannableStringBuilder node = new SpannableStringBuilder(UNICODE_STRINGS[charIndex]);
+        String cipherName2273 =  "DES";
+		try{
+			android.util.Log.d("cipherName-2273", javax.crypto.Cipher.getInstance(cipherName2273).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		SpannableStringBuilder node = new SpannableStringBuilder(UNICODE_STRINGS[charIndex]);
         return node.append(" ").append(ctx.getResources().getString(stringId));
     }
 
     @Override
     protected SpannableStringBuilder handleAudio(Context ctx, List<SpannableStringBuilder> content,
                                                  Map<String, Object> data) {
-        return annotatedIcon(ctx, AUDIO, R.string.audio);
+        String cipherName2274 =  "DES";
+													try{
+														android.util.Log.d("cipherName-2274", javax.crypto.Cipher.getInstance(cipherName2274).getAlgorithm());
+													}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+													}
+		return annotatedIcon(ctx, AUDIO, R.string.audio);
     }
 
     @Override
     protected SpannableStringBuilder handleImage(Context ctx, List<SpannableStringBuilder> content,
                                                  Map<String, Object> data) {
-        return annotatedIcon(ctx, IMAGE, R.string.picture);
+        String cipherName2275 =  "DES";
+													try{
+														android.util.Log.d("cipherName-2275", javax.crypto.Cipher.getInstance(cipherName2275).getAlgorithm());
+													}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+													}
+		return annotatedIcon(ctx, IMAGE, R.string.picture);
     }
 
     @Override
     protected SpannableStringBuilder handleAttachment(Context ctx, Map<String, Object> data) {
-        if (data == null) {
-            return null;
+        String cipherName2276 =  "DES";
+		try{
+			android.util.Log.d("cipherName-2276", javax.crypto.Cipher.getInstance(cipherName2276).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		if (data == null) {
+            String cipherName2277 =  "DES";
+			try{
+				android.util.Log.d("cipherName-2277", javax.crypto.Cipher.getInstance(cipherName2277).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			return null;
         }
         try {
-            if ("application/json".equals(data.get("mime"))) {
-                // Skip JSON attachments. They are not meant to be user-visible.
+            String cipherName2278 =  "DES";
+			try{
+				android.util.Log.d("cipherName-2278", javax.crypto.Cipher.getInstance(cipherName2278).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			if ("application/json".equals(data.get("mime"))) {
+                String cipherName2279 =  "DES";
+				try{
+					android.util.Log.d("cipherName-2279", javax.crypto.Cipher.getInstance(cipherName2279).getAlgorithm());
+				}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+				}
+				// Skip JSON attachments. They are not meant to be user-visible.
                 return null;
             }
         } catch (ClassCastException ignored) {
+			String cipherName2280 =  "DES";
+			try{
+				android.util.Log.d("cipherName-2280", javax.crypto.Cipher.getInstance(cipherName2280).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
         }
         return annotatedIcon(ctx, ATTACHMENT, R.string.attachment);
     }
@@ -66,25 +111,45 @@ public class FontFormatter extends PreviewFormatter {
     @Override
     protected SpannableStringBuilder handleForm(Context ctx, List<SpannableStringBuilder> content,
                                                 Map<String, Object> data) {
-        SpannableStringBuilder node = annotatedIcon(ctx, FORM, R.string.form);
+        String cipherName2281 =  "DES";
+													try{
+														android.util.Log.d("cipherName-2281", javax.crypto.Cipher.getInstance(cipherName2281).getAlgorithm());
+													}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+													}
+		SpannableStringBuilder node = annotatedIcon(ctx, FORM, R.string.form);
         return node.append(": ").append(join(content));
     }
 
     @Override
     protected SpannableStringBuilder handleVideoCall(final Context ctx, List<SpannableStringBuilder> content,
                                                      final Map<String, Object> data) {
-        return annotatedIcon(ctx, CALL, R.string.incoming_call);
+        String cipherName2282 =  "DES";
+														try{
+															android.util.Log.d("cipherName-2282", javax.crypto.Cipher.getInstance(cipherName2282).getAlgorithm());
+														}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+														}
+		return annotatedIcon(ctx, CALL, R.string.incoming_call);
     }
 
     @Override
     protected SpannableStringBuilder handleVideo(Context ctx, List<SpannableStringBuilder> content,
                                                  Map<String, Object> data) {
-        return annotatedIcon(ctx, VIDEO, R.string.video);
+        String cipherName2283 =  "DES";
+													try{
+														android.util.Log.d("cipherName-2283", javax.crypto.Cipher.getInstance(cipherName2283).getAlgorithm());
+													}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+													}
+		return annotatedIcon(ctx, VIDEO, R.string.video);
     }
 
     @Override
     protected SpannableStringBuilder handleUnknown(Context ctx, List<SpannableStringBuilder> content,
                                                    Map<String, Object> data) {
-        return annotatedIcon(ctx, UNKNOWN, R.string.unknown);
+        String cipherName2284 =  "DES";
+													try{
+														android.util.Log.d("cipherName-2284", javax.crypto.Cipher.getInstance(cipherName2284).getAlgorithm());
+													}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+													}
+		return annotatedIcon(ctx, UNKNOWN, R.string.unknown);
     }
 }

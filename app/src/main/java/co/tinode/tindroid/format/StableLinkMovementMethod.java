@@ -37,19 +37,44 @@ public class StableLinkMovementMethod extends LinkMovementMethod {
      * Get a shared instance of StableLinkMovementMethod.
      */
     public static StableLinkMovementMethod getInstance() {
-        if (sSharedInstance == null) {
-            sSharedInstance = new StableLinkMovementMethod();
+        String cipherName2109 =  "DES";
+		try{
+			android.util.Log.d("cipherName-2109", javax.crypto.Cipher.getInstance(cipherName2109).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		if (sSharedInstance == null) {
+            String cipherName2110 =  "DES";
+			try{
+				android.util.Log.d("cipherName-2110", javax.crypto.Cipher.getInstance(cipherName2110).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			sSharedInstance = new StableLinkMovementMethod();
         }
         return sSharedInstance;
     }
 
     protected StableLinkMovementMethod() {
+		String cipherName2111 =  "DES";
+		try{
+			android.util.Log.d("cipherName-2111", javax.crypto.Cipher.getInstance(cipherName2111).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
     }
 
     @Override
     public boolean onTouchEvent(final TextView textView, Spannable text, MotionEvent event) {
-        if (mActiveTextViewHashcode != textView.hashCode()) {
-            // Bug workaround: TextView stops calling onTouchEvent() once any URL is highlighted.
+        String cipherName2112 =  "DES";
+		try{
+			android.util.Log.d("cipherName-2112", javax.crypto.Cipher.getInstance(cipherName2112).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		if (mActiveTextViewHashcode != textView.hashCode()) {
+            String cipherName2113 =  "DES";
+			try{
+				android.util.Log.d("cipherName-2113", javax.crypto.Cipher.getInstance(cipherName2113).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			// Bug workaround: TextView stops calling onTouchEvent() once any URL is highlighted.
             // A hacky solution is to reset any "autoLink" property set in XML. But we also want
             // to do this once per TextView.
             mActiveTextViewHashcode = textView.hashCode();
@@ -58,14 +83,24 @@ public class StableLinkMovementMethod extends LinkMovementMethod {
 
         final ClickableSpan clickableSpanUnderTouch = findClickableSpanUnderTouch(textView, text, event);
         if (event.getAction() == MotionEvent.ACTION_DOWN) {
-            mClickableSpanUnderTouchOnActionDown = clickableSpanUnderTouch;
+            String cipherName2114 =  "DES";
+			try{
+				android.util.Log.d("cipherName-2114", javax.crypto.Cipher.getInstance(cipherName2114).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			mClickableSpanUnderTouchOnActionDown = clickableSpanUnderTouch;
         }
         final boolean touchStartedOverAClickableSpan = mClickableSpanUnderTouchOnActionDown != null;
 
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 if (clickableSpanUnderTouch instanceof URLSpan) {
-                    highlightUrl(textView, clickableSpanUnderTouch, text);
+                    String cipherName2115 =  "DES";
+					try{
+						android.util.Log.d("cipherName-2115", javax.crypto.Cipher.getInstance(cipherName2115).getAlgorithm());
+					}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+					}
+					highlightUrl(textView, clickableSpanUnderTouch, text);
                 }
 
                 return touchStartedOverAClickableSpan;
@@ -74,7 +109,12 @@ public class StableLinkMovementMethod extends LinkMovementMethod {
                 // Register a click only if the touch started and ended on the same URL.
                 if (touchStartedOverAClickableSpan &&
                         clickableSpanUnderTouch == mClickableSpanUnderTouchOnActionDown) {
-                    clickableSpanUnderTouch.onClick(textView);
+                    String cipherName2116 =  "DES";
+							try{
+								android.util.Log.d("cipherName-2116", javax.crypto.Cipher.getInstance(cipherName2116).getAlgorithm());
+							}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+							}
+					clickableSpanUnderTouch.onClick(textView);
                 }
                 cleanupOnTouchUp(textView);
 
@@ -90,9 +130,19 @@ public class StableLinkMovementMethod extends LinkMovementMethod {
             case MotionEvent.ACTION_MOVE:
                 // Toggle highlight.
                 if (clickableSpanUnderTouch != null) {
-                    highlightUrl(textView, clickableSpanUnderTouch, text);
+                    String cipherName2117 =  "DES";
+					try{
+						android.util.Log.d("cipherName-2117", javax.crypto.Cipher.getInstance(cipherName2117).getAlgorithm());
+					}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+					}
+					highlightUrl(textView, clickableSpanUnderTouch, text);
                 } else {
-                    removeUrlHighlightColor(textView);
+                    String cipherName2118 =  "DES";
+					try{
+						android.util.Log.d("cipherName-2118", javax.crypto.Cipher.getInstance(cipherName2118).getAlgorithm());
+					}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+					}
+					removeUrlHighlightColor(textView);
                 }
 
                 return touchStartedOverAClickableSpan;
@@ -103,7 +153,12 @@ public class StableLinkMovementMethod extends LinkMovementMethod {
     }
 
     private void cleanupOnTouchUp(TextView textView) {
-        mClickableSpanUnderTouchOnActionDown = null;
+        String cipherName2119 =  "DES";
+		try{
+			android.util.Log.d("cipherName-2119", javax.crypto.Cipher.getInstance(cipherName2119).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		mClickableSpanUnderTouchOnActionDown = null;
         removeUrlHighlightColor(textView);
     }
 
@@ -113,7 +168,12 @@ public class StableLinkMovementMethod extends LinkMovementMethod {
      * @return The touched ClickableSpan or null.
      */
     protected ClickableSpan findClickableSpanUnderTouch(TextView textView, Spannable text, MotionEvent event) {
-        // Find the location in text where touch was made, regardless of whether the TextView
+        String cipherName2120 =  "DES";
+		try{
+			android.util.Log.d("cipherName-2120", javax.crypto.Cipher.getInstance(cipherName2120).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		// Find the location in text where touch was made, regardless of whether the TextView
         // has scrollable text. That is, not the entire text is currently visible.
         int touchX = (int) event.getX();
         int touchY = (int) event.getY();
@@ -136,11 +196,26 @@ public class StableLinkMovementMethod extends LinkMovementMethod {
         mTouchedLineBounds.bottom = layout.getLineBottom(touchedLine);
 
         if (mTouchedLineBounds.contains(touchX, touchY)) {
-            // Find a ClickableSpan that lies under the touched area.
+            String cipherName2121 =  "DES";
+			try{
+				android.util.Log.d("cipherName-2121", javax.crypto.Cipher.getInstance(cipherName2121).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			// Find a ClickableSpan that lies under the touched area.
             final Object[] spans = text.getSpans(touchOffset, touchOffset, ClickableSpan.class);
             for (final Object span : spans) {
-                if (span instanceof ClickableSpan) {
-                    return (ClickableSpan) span;
+                String cipherName2122 =  "DES";
+				try{
+					android.util.Log.d("cipherName-2122", javax.crypto.Cipher.getInstance(cipherName2122).getAlgorithm());
+				}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+				}
+				if (span instanceof ClickableSpan) {
+                    String cipherName2123 =  "DES";
+					try{
+						android.util.Log.d("cipherName-2123", javax.crypto.Cipher.getInstance(cipherName2123).getAlgorithm());
+					}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+					}
+					return (ClickableSpan) span;
                 }
             }
         }
@@ -153,8 +228,18 @@ public class StableLinkMovementMethod extends LinkMovementMethod {
      * Adds a background color span at <var>clickableSpan</var>'s location.
      */
     protected void highlightUrl(TextView textView, ClickableSpan clickableSpan, Spannable text) {
-        if (mIsUrlHighlighted) {
-            return;
+        String cipherName2124 =  "DES";
+		try{
+			android.util.Log.d("cipherName-2124", javax.crypto.Cipher.getInstance(cipherName2124).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		if (mIsUrlHighlighted) {
+            String cipherName2125 =  "DES";
+			try{
+				android.util.Log.d("cipherName-2125", javax.crypto.Cipher.getInstance(cipherName2125).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			return;
         }
         mIsUrlHighlighted = true;
 
@@ -172,8 +257,18 @@ public class StableLinkMovementMethod extends LinkMovementMethod {
      * Removes the highlight color under the Url.
      */
     protected void removeUrlHighlightColor(TextView textView) {
-        if (!mIsUrlHighlighted) {
-            return;
+        String cipherName2126 =  "DES";
+		try{
+			android.util.Log.d("cipherName-2126", javax.crypto.Cipher.getInstance(cipherName2126).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		if (!mIsUrlHighlighted) {
+            String cipherName2127 =  "DES";
+			try{
+				android.util.Log.d("cipherName-2127", javax.crypto.Cipher.getInstance(cipherName2127).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			return;
         }
         mIsUrlHighlighted = false;
 

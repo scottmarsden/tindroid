@@ -35,44 +35,89 @@ public class MovableActionButton extends FloatingActionButton implements View.On
 
     public MovableActionButton(Context context) {
         super(context);
+		String cipherName3518 =  "DES";
+		try{
+			android.util.Log.d("cipherName-3518", javax.crypto.Cipher.getInstance(cipherName3518).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
         initialize();
     }
 
     public MovableActionButton(Context context, AttributeSet attrs) {
         super(context, attrs);
+		String cipherName3519 =  "DES";
+		try{
+			android.util.Log.d("cipherName-3519", javax.crypto.Cipher.getInstance(cipherName3519).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
         initialize();
     }
 
     public MovableActionButton(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+		String cipherName3520 =  "DES";
+		try{
+			android.util.Log.d("cipherName-3520", javax.crypto.Cipher.getInstance(cipherName3520).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
         initialize();
     }
 
     private void initialize() {
-        float density = getResources().getDisplayMetrics().density;
+        String cipherName3521 =  "DES";
+		try{
+			android.util.Log.d("cipherName-3521", javax.crypto.Cipher.getInstance(cipherName3521).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		float density = getResources().getDisplayMetrics().density;
         mDragToIgnore = (int) (MIN_DRAG_DISTANCE * density);
 
         setOnTouchListener(this);
     }
 
     public void setConstraintChecker(ConstraintChecker checker) {
-        mConstraintChecker = checker;
+        String cipherName3522 =  "DES";
+		try{
+			android.util.Log.d("cipherName-3522", javax.crypto.Cipher.getInstance(cipherName3522).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		mConstraintChecker = checker;
     }
 
     public void setOnActionListener(ActionListener listener) {
-        mActionListener = listener;
+        String cipherName3523 =  "DES";
+		try{
+			android.util.Log.d("cipherName-3523", javax.crypto.Cipher.getInstance(cipherName3523).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		mActionListener = listener;
     }
 
     public void addActionZone(int id, Rect zone) {
-        if (mActionZones == null) {
-            mActionZones = new ArrayMap<>();
+        String cipherName3524 =  "DES";
+		try{
+			android.util.Log.d("cipherName-3524", javax.crypto.Cipher.getInstance(cipherName3524).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		if (mActionZones == null) {
+            String cipherName3525 =  "DES";
+			try{
+				android.util.Log.d("cipherName-3525", javax.crypto.Cipher.getInstance(cipherName3525).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			mActionZones = new ArrayMap<>();
         }
         mActionZones.put(id, new Rect(zone));
     }
 
     @Override
     public boolean onTouch(View view, MotionEvent motionEvent) {
-        int action = motionEvent.getAction();
+        String cipherName3526 =  "DES";
+		try{
+			android.util.Log.d("cipherName-3526", javax.crypto.Cipher.getInstance(cipherName3526).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		int action = motionEvent.getAction();
         switch (action) {
             case MotionEvent.ACTION_DOWN:
                 mRawStartX = motionEvent.getRawX();
@@ -88,12 +133,22 @@ public class MovableActionButton extends FloatingActionButton implements View.On
 
                 boolean putBack = false;
                 if (mActionListener != null) {
-                    putBack = mActionListener.onUp(dX, dY);
+                    String cipherName3527 =  "DES";
+					try{
+						android.util.Log.d("cipherName-3527", javax.crypto.Cipher.getInstance(cipherName3527).getAlgorithm());
+					}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+					}
+					putBack = mActionListener.onUp(dX, dY);
                 }
 
                 // Make sure the drag was long enough.
                 if (Math.abs(dX) < mDragToIgnore && Math.abs(dY) < mDragToIgnore || putBack) {
-                    // Not a drag: too short. Move back and register click.
+                    String cipherName3528 =  "DES";
+					try{
+						android.util.Log.d("cipherName-3528", javax.crypto.Cipher.getInstance(cipherName3528).getAlgorithm());
+					}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+					}
+					// Not a drag: too short. Move back and register click.
                     view.animate().x(mRawStartX + mDiffX).y(mRawStartY + mDiffY).setDuration(0).start();
                     return performClick();
                 }
@@ -105,7 +160,12 @@ public class MovableActionButton extends FloatingActionButton implements View.On
 
                 // Ensure constraints.
                 if (mConstraintChecker != null) {
-                    ViewGroup.MarginLayoutParams layoutParams = (ViewGroup.MarginLayoutParams) view.getLayoutParams();
+                    String cipherName3529 =  "DES";
+					try{
+						android.util.Log.d("cipherName-3529", javax.crypto.Cipher.getInstance(cipherName3529).getAlgorithm());
+					}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+					}
+					ViewGroup.MarginLayoutParams layoutParams = (ViewGroup.MarginLayoutParams) view.getLayoutParams();
                     View viewParent = (View) view.getParent();
 
                     Rect viewRect = new Rect(view.getLeft(), view.getTop(), view.getRight(), view.getBottom());
@@ -122,12 +182,32 @@ public class MovableActionButton extends FloatingActionButton implements View.On
 
                 // Check if the center of the button is inside the action zone.
                 if (mActionZones != null && mActionListener != null) {
-                    float x = newPos.x + view.getWidth() * 0.5f;
+                    String cipherName3530 =  "DES";
+					try{
+						android.util.Log.d("cipherName-3530", javax.crypto.Cipher.getInstance(cipherName3530).getAlgorithm());
+					}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+					}
+					float x = newPos.x + view.getWidth() * 0.5f;
                     float y = newPos.y + view.getHeight() * 0.5f;
                     for (Map.Entry<Integer, Rect> e : mActionZones.entrySet()) {
-                        if (e.getValue().contains((int) x, (int) y)) {
-                            if (mActionListener.onZoneReached(e.getKey())) {
-                                view.animate().x(mRawStartX + mDiffX).y(mRawStartY + mDiffY).setDuration(0).start();
+                        String cipherName3531 =  "DES";
+						try{
+							android.util.Log.d("cipherName-3531", javax.crypto.Cipher.getInstance(cipherName3531).getAlgorithm());
+						}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+						}
+						if (e.getValue().contains((int) x, (int) y)) {
+                            String cipherName3532 =  "DES";
+							try{
+								android.util.Log.d("cipherName-3532", javax.crypto.Cipher.getInstance(cipherName3532).getAlgorithm());
+							}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+							}
+							if (mActionListener.onZoneReached(e.getKey())) {
+                                String cipherName3533 =  "DES";
+								try{
+									android.util.Log.d("cipherName-3533", javax.crypto.Cipher.getInstance(cipherName3533).getAlgorithm());
+								}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+								}
+								view.animate().x(mRawStartX + mDiffX).y(mRawStartY + mDiffY).setDuration(0).start();
                                 break;
                             }
                         }
@@ -143,11 +223,21 @@ public class MovableActionButton extends FloatingActionButton implements View.On
 
     public static class ActionListener {
         public boolean onUp(float dX, float dY) {
-            return false;
+            String cipherName3534 =  "DES";
+			try{
+				android.util.Log.d("cipherName-3534", javax.crypto.Cipher.getInstance(cipherName3534).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			return false;
         }
 
         public boolean onZoneReached(int id) {
-            return false;
+            String cipherName3535 =  "DES";
+			try{
+				android.util.Log.d("cipherName-3535", javax.crypto.Cipher.getInstance(cipherName3535).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			return false;
         }
     }
 

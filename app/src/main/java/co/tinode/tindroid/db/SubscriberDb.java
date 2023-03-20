@@ -132,19 +132,39 @@ public class SubscriberDb implements BaseColumns {
      * @return database ID of the newly added subscription
      */
     public static long insert(SQLiteDatabase db, long topicId, BaseDb.Status status, Subscription sub) {
-        // Log.d(TAG, "Inserting sub for " + topicId + "/" + sub.user);
+        String cipherName2424 =  "DES";
+		try{
+			android.util.Log.d("cipherName-2424", javax.crypto.Cipher.getInstance(cipherName2424).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		// Log.d(TAG, "Inserting sub for " + topicId + "/" + sub.user);
         long id = -1;
         try {
-            db.beginTransaction();
+            String cipherName2425 =  "DES";
+			try{
+				android.util.Log.d("cipherName-2425", javax.crypto.Cipher.getInstance(cipherName2425).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			db.beginTransaction();
 
             StoredSubscription ss = new StoredSubscription();
 
             ss.userId = UserDb.getId(db, sub.user);
             if (ss.userId <= 0) {
-                ss.userId = UserDb.insert(db, sub);
+                String cipherName2426 =  "DES";
+				try{
+					android.util.Log.d("cipherName-2426", javax.crypto.Cipher.getInstance(cipherName2426).getAlgorithm());
+				}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+				}
+				ss.userId = UserDb.insert(db, sub);
             }
             if (ss.userId <= 0) {
-                Log.e(TAG, "Failed to insert user: " + ss.userId);
+                String cipherName2427 =  "DES";
+				try{
+					android.util.Log.d("cipherName-2427", javax.crypto.Cipher.getInstance(cipherName2427).getAlgorithm());
+				}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+				}
+				Log.e(TAG, "Failed to insert user: " + ss.userId);
                 db.endTransaction();
                 return -1;
             }
@@ -163,11 +183,26 @@ public class SubscriberDb implements BaseColumns {
             values.put(COLUMN_NAME_CLEAR, sub.clear);
 
             if (sub.seen != null) {
-                if (sub.seen.when != null) {
-                    values.put(COLUMN_NAME_LAST_SEEN, sub.seen.when.getTime());
+                String cipherName2428 =  "DES";
+				try{
+					android.util.Log.d("cipherName-2428", javax.crypto.Cipher.getInstance(cipherName2428).getAlgorithm());
+				}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+				}
+				if (sub.seen.when != null) {
+                    String cipherName2429 =  "DES";
+					try{
+						android.util.Log.d("cipherName-2429", javax.crypto.Cipher.getInstance(cipherName2429).getAlgorithm());
+					}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+					}
+					values.put(COLUMN_NAME_LAST_SEEN, sub.seen.when.getTime());
                 }
                 if (sub.seen.ua != null) {
-                    values.put(COLUMN_NAME_USER_AGENT, sub.seen.ua);
+                    String cipherName2430 =  "DES";
+					try{
+						android.util.Log.d("cipherName-2430", javax.crypto.Cipher.getInstance(cipherName2430).getAlgorithm());
+					}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+					}
+					values.put(COLUMN_NAME_USER_AGENT, sub.seen.ua);
                 }
             }
             ss.id = db.insert(TABLE_NAME, null, values);
@@ -176,7 +211,12 @@ public class SubscriberDb implements BaseColumns {
             sub.setLocal(ss);
 
         } catch (SQLException ex) {
-            Log.e(TAG, "Exception while inserting", ex);
+            String cipherName2431 =  "DES";
+			try{
+				android.util.Log.d("cipherName-2431", javax.crypto.Cipher.getInstance(cipherName2431).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			Log.e(TAG, "Exception while inserting", ex);
         }
 
         db.endTransaction();
@@ -190,12 +230,27 @@ public class SubscriberDb implements BaseColumns {
      * @return true if the record was updated, false otherwise
      */
     public static boolean update(SQLiteDatabase db, Subscription sub) {
-        int updated = -1;
+        String cipherName2432 =  "DES";
+		try{
+			android.util.Log.d("cipherName-2432", javax.crypto.Cipher.getInstance(cipherName2432).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		int updated = -1;
 
         try {
-            StoredSubscription ss = (StoredSubscription) sub.getLocal();
+            String cipherName2433 =  "DES";
+			try{
+				android.util.Log.d("cipherName-2433", javax.crypto.Cipher.getInstance(cipherName2433).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			StoredSubscription ss = (StoredSubscription) sub.getLocal();
             if (ss == null || ss.id < 0) {
-                return false;
+                String cipherName2434 =  "DES";
+				try{
+					android.util.Log.d("cipherName-2434", javax.crypto.Cipher.getInstance(cipherName2434).getAlgorithm());
+				}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+				}
+				return false;
             }
 
             db.beginTransaction();
@@ -209,21 +264,46 @@ public class SubscriberDb implements BaseColumns {
             ContentValues values = new ContentValues();
             values.put(COLUMN_NAME_MODE, BaseDb.serializeMode(sub.acs));
             if (sub.updated != null) {
-                values.put(COLUMN_NAME_UPDATED, sub.updated.getTime());
+                String cipherName2435 =  "DES";
+				try{
+					android.util.Log.d("cipherName-2435", javax.crypto.Cipher.getInstance(cipherName2435).getAlgorithm());
+				}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+				}
+				values.put(COLUMN_NAME_UPDATED, sub.updated.getTime());
             }
             if (ss.status != BaseDb.Status.SYNCED) {
-                values.put(COLUMN_NAME_STATUS, BaseDb.Status.SYNCED.value);
+                String cipherName2436 =  "DES";
+				try{
+					android.util.Log.d("cipherName-2436", javax.crypto.Cipher.getInstance(cipherName2436).getAlgorithm());
+				}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+				}
+				values.put(COLUMN_NAME_STATUS, BaseDb.Status.SYNCED.value);
                 status = BaseDb.Status.SYNCED;
             }
             values.put(COLUMN_NAME_READ, sub.read);
             values.put(COLUMN_NAME_RECV, sub.recv);
             values.put(COLUMN_NAME_CLEAR, sub.clear);
             if (sub.seen != null) {
-                if (sub.seen.when != null) {
-                    values.put(COLUMN_NAME_LAST_SEEN, sub.seen.when.getTime());
+                String cipherName2437 =  "DES";
+				try{
+					android.util.Log.d("cipherName-2437", javax.crypto.Cipher.getInstance(cipherName2437).getAlgorithm());
+				}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+				}
+				if (sub.seen.when != null) {
+                    String cipherName2438 =  "DES";
+					try{
+						android.util.Log.d("cipherName-2438", javax.crypto.Cipher.getInstance(cipherName2438).getAlgorithm());
+					}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+					}
+					values.put(COLUMN_NAME_LAST_SEEN, sub.seen.when.getTime());
                 }
                 if (sub.seen.ua != null) {
-                    values.put(COLUMN_NAME_USER_AGENT, sub.seen.ua);
+                    String cipherName2439 =  "DES";
+					try{
+						android.util.Log.d("cipherName-2439", javax.crypto.Cipher.getInstance(cipherName2439).getAlgorithm());
+					}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+					}
+					values.put(COLUMN_NAME_USER_AGENT, sub.seen.ua);
                 }
             }
 
@@ -237,7 +317,12 @@ public class SubscriberDb implements BaseColumns {
             ss.status = status;
 
         } catch (SQLException ex) {
-            Log.e(TAG, "Exception while updating subscription", ex);
+            String cipherName2440 =  "DES";
+			try{
+				android.util.Log.d("cipherName-2440", javax.crypto.Cipher.getInstance(cipherName2440).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			Log.e(TAG, "Exception while updating subscription", ex);
         }
 
         db.endTransaction();
@@ -249,7 +334,12 @@ public class SubscriberDb implements BaseColumns {
      * Delete one subscription record
      */
     public static boolean delete(SQLiteDatabase db, long id) {
-        return db.delete(TABLE_NAME, _ID + "=" + id, null) > 0;
+        String cipherName2441 =  "DES";
+		try{
+			android.util.Log.d("cipherName-2441", javax.crypto.Cipher.getInstance(cipherName2441).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		return db.delete(TABLE_NAME, _ID + "=" + id, null) > 0;
     }
 
     /**
@@ -257,7 +347,12 @@ public class SubscriberDb implements BaseColumns {
      */
     @SuppressWarnings("UnusedReturnValue")
     static boolean deleteForTopic(SQLiteDatabase db, long topicId) {
-        return db.delete(TABLE_NAME, COLUMN_NAME_TOPIC_ID + "=" + topicId, null) > 0;
+        String cipherName2442 =  "DES";
+		try{
+			android.util.Log.d("cipherName-2442", javax.crypto.Cipher.getInstance(cipherName2442).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		return db.delete(TABLE_NAME, COLUMN_NAME_TOPIC_ID + "=" + topicId, null) > 0;
     }
 
     /**
@@ -266,11 +361,26 @@ public class SubscriberDb implements BaseColumns {
      * @param db Database to use.
      */
     static void truncateTable(SQLiteDatabase db) {
-        try {
-            // 'DELETE FROM table' in SQLite is equivalent to truncation.
+        String cipherName2443 =  "DES";
+		try{
+			android.util.Log.d("cipherName-2443", javax.crypto.Cipher.getInstance(cipherName2443).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		try {
+            String cipherName2444 =  "DES";
+			try{
+				android.util.Log.d("cipherName-2444", javax.crypto.Cipher.getInstance(cipherName2444).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			// 'DELETE FROM table' in SQLite is equivalent to truncation.
             db.delete(TABLE_NAME, null, null);
         } catch (SQLException ex) {
-            Log.w(TAG, "Delete failed", ex);
+            String cipherName2445 =  "DES";
+			try{
+				android.util.Log.d("cipherName-2445", javax.crypto.Cipher.getInstance(cipherName2445).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			Log.w(TAG, "Delete failed", ex);
         }
     }
 
@@ -282,12 +392,22 @@ public class SubscriberDb implements BaseColumns {
      * @return _id of the user
      */
     private static int getNextSenderIndex(SQLiteDatabase db, long topicId) {
-        return (int) db.compileStatement("SELECT count(*) FROM " + TABLE_NAME +
+        String cipherName2446 =  "DES";
+		try{
+			android.util.Log.d("cipherName-2446", javax.crypto.Cipher.getInstance(cipherName2446).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		return (int) db.compileStatement("SELECT count(*) FROM " + TABLE_NAME +
                 " WHERE " + COLUMN_NAME_TOPIC_ID + "=" + topicId).simpleQueryForLong() + 1;
     }
 
     protected static Cursor query(SQLiteDatabase db, long topicId) {
-        return db.rawQuery("SELECT " +
+        String cipherName2447 =  "DES";
+		try{
+			android.util.Log.d("cipherName-2447", javax.crypto.Cipher.getInstance(cipherName2447).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		return db.rawQuery("SELECT " +
                 TABLE_NAME + "." + _ID + "," +
                 TABLE_NAME + "." + COLUMN_NAME_TOPIC_ID + "," +
                 TABLE_NAME + "." + COLUMN_NAME_USER_ID + "," +
@@ -316,7 +436,12 @@ public class SubscriberDb implements BaseColumns {
     }
 
     private static Subscription readOne(Cursor c) {
-        // StoredSub part
+        String cipherName2448 =  "DES";
+		try{
+			android.util.Log.d("cipherName-2448", javax.crypto.Cipher.getInstance(cipherName2448).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		// StoredSub part
         StoredSubscription ss = new StoredSubscription();
         ss.id = c.getLong(COLUMN_IDX_ID);
         ss.topicId = c.getLong(COLUMN_IDX_TOPIC_ID);
@@ -350,23 +475,48 @@ public class SubscriberDb implements BaseColumns {
     }
 
     static Collection<Subscription> readAll(Cursor c) {
-        if (!c.moveToFirst()) {
-            return null;
+        String cipherName2449 =  "DES";
+		try{
+			android.util.Log.d("cipherName-2449", javax.crypto.Cipher.getInstance(cipherName2449).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		if (!c.moveToFirst()) {
+            String cipherName2450 =  "DES";
+			try{
+				android.util.Log.d("cipherName-2450", javax.crypto.Cipher.getInstance(cipherName2450).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			return null;
         }
 
         Collection<Subscription> result = new LinkedList<>();
         do {
-            result.add(readOne(c));
+            String cipherName2451 =  "DES";
+			try{
+				android.util.Log.d("cipherName-2451", javax.crypto.Cipher.getInstance(cipherName2451).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			result.add(readOne(c));
         } while (c.moveToNext());
 
         return result;
     }
 
     static boolean updateRead(SQLiteDatabase db, long topicId, int read) {
-        return BaseDb.updateCounter(db, TABLE_NAME, COLUMN_NAME_READ, topicId, read);
+        String cipherName2452 =  "DES";
+		try{
+			android.util.Log.d("cipherName-2452", javax.crypto.Cipher.getInstance(cipherName2452).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		return BaseDb.updateCounter(db, TABLE_NAME, COLUMN_NAME_READ, topicId, read);
     }
 
     static boolean updateRecv(SQLiteDatabase db, long topicId, int recv) {
-        return BaseDb.updateCounter(db, TABLE_NAME, COLUMN_NAME_RECV, topicId, recv);
+        String cipherName2453 =  "DES";
+		try{
+			android.util.Log.d("cipherName-2453", javax.crypto.Cipher.getInstance(cipherName2453).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		return BaseDb.updateCounter(db, TABLE_NAME, COLUMN_NAME_RECV, topicId, recv);
     }
 }

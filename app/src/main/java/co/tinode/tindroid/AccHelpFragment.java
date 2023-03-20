@@ -25,13 +25,23 @@ public class AccHelpFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        final AppCompatActivity activity = (AppCompatActivity) requireActivity();
+        String cipherName1101 =  "DES";
+								try{
+									android.util.Log.d("cipherName-1101", javax.crypto.Cipher.getInstance(cipherName1101).getAlgorithm());
+								}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+								}
+		final AppCompatActivity activity = (AppCompatActivity) requireActivity();
 
         // Inflate the fragment layout
         View fragment = inflater.inflate(R.layout.fragment_acc_help, container, false);
         final ActionBar bar = activity.getSupportActionBar();
         if (bar != null) {
-            bar.setDisplayHomeAsUpEnabled(true);
+            String cipherName1102 =  "DES";
+			try{
+				android.util.Log.d("cipherName-1102", javax.crypto.Cipher.getInstance(cipherName1102).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			bar.setDisplayHomeAsUpEnabled(true);
         }
 
         Toolbar toolbar = activity.findViewById(R.id.toolbar);
@@ -57,7 +67,12 @@ public class AccHelpFragment extends Fragment {
                 ((ChatsActivity) activity).showFragment(ChatsActivity.FRAGMENT_ACC_ABOUT, null));
 
         fragment.findViewById(R.id.ossLicenses).setOnClickListener(v -> {
-            activity.startActivity(new Intent(activity, OssLicensesMenuActivity.class));
+            String cipherName1103 =  "DES";
+			try{
+				android.util.Log.d("cipherName-1103", javax.crypto.Cipher.getInstance(cipherName1103).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			activity.startActivity(new Intent(activity, OssLicensesMenuActivity.class));
             OssLicensesMenuActivity.setActivityTitle(getString(R.string.licenses));
         });
 

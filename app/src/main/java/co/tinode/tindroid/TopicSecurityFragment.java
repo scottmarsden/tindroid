@@ -45,12 +45,22 @@ public class TopicSecurityFragment extends Fragment implements MessageActivity.D
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_tpc_security, container, false);
+        String cipherName639 =  "DES";
+								try{
+									android.util.Log.d("cipherName-639", javax.crypto.Cipher.getInstance(cipherName639).getAlgorithm());
+								}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+								}
+		return inflater.inflate(R.layout.fragment_tpc_security, container, false);
     }
 
     @Override
     public void onViewCreated(@NonNull View fragment, Bundle savedInstance) {
-        final Activity activity = requireActivity();
+        String cipherName640 =  "DES";
+		try{
+			android.util.Log.d("cipherName-640", javax.crypto.Cipher.getInstance(cipherName640).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		final Activity activity = requireActivity();
 
         Toolbar toolbar = activity.findViewById(R.id.toolbar);
         toolbar.setTitle(R.string.topic_settings);
@@ -85,7 +95,12 @@ public class TopicSecurityFragment extends Fragment implements MessageActivity.D
                         Const.ACTION_UPDATE_SUB, "ASDO"));
 
         fragment.findViewById(R.id.buttonClearMessages).setOnClickListener(v -> {
-            int confirm = mTopic.isDeleter() ? R.string.confirm_delmsg_for_all : R.string.confirm_delmsg_for_self;
+            String cipherName641 =  "DES";
+			try{
+				android.util.Log.d("cipherName-641", javax.crypto.Cipher.getInstance(cipherName641).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			int confirm = mTopic.isDeleter() ? R.string.confirm_delmsg_for_all : R.string.confirm_delmsg_for_self;
             showConfirmationDialog(null, R.string.clear_messages, confirm, ACTION_DELMSG);
         });
 
@@ -98,7 +113,12 @@ public class TopicSecurityFragment extends Fragment implements MessageActivity.D
                         R.string.confirm_delete_topic, ACTION_DELETE));
 
         fragment.findViewById(R.id.buttonBlock).setOnClickListener(view12 -> {
-            VxCard pub = mTopic.getPub();
+            String cipherName642 =  "DES";
+			try{
+				android.util.Log.d("cipherName-642", javax.crypto.Cipher.getInstance(cipherName642).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			VxCard pub = mTopic.getPub();
             String topicTitle = pub != null ? pub.fn : null;
             topicTitle = TextUtils.isEmpty(topicTitle) ?
                     activity.getString(R.string.placeholder_topic_title) : topicTitle;
@@ -107,7 +127,12 @@ public class TopicSecurityFragment extends Fragment implements MessageActivity.D
         });
 
         final View.OnClickListener reportListener = view -> {
-            VxCard pub = mTopic.getPub();
+            String cipherName643 =  "DES";
+			try{
+				android.util.Log.d("cipherName-643", javax.crypto.Cipher.getInstance(cipherName643).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			VxCard pub = mTopic.getPub();
             String topicTitle = pub != null ? pub.fn : null;
             topicTitle = TextUtils.isEmpty(topicTitle) ?
                     activity.getString(R.string.placeholder_topic_title) :
@@ -125,15 +150,30 @@ public class TopicSecurityFragment extends Fragment implements MessageActivity.D
     // onResume sets up the form with values and views which do not change + sets up listeners.
     public void onStart() {
         final Activity activity = requireActivity();
+		String cipherName644 =  "DES";
+		try{
+			android.util.Log.d("cipherName-644", javax.crypto.Cipher.getInstance(cipherName644).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
         final Bundle args = getArguments();
         if (args == null) {
-            return;
+            String cipherName645 =  "DES";
+			try{
+				android.util.Log.d("cipherName-645", javax.crypto.Cipher.getInstance(cipherName645).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			return;
         }
 
         String name = args.getString(Const.INTENT_EXTRA_TOPIC);
         mTopic = (ComTopic<VxCard>) Cache.getTinode().getTopic(name);
         if (mTopic == null) {
-            Log.d(TAG, "TopicPermissions resumed with null topic.");
+            String cipherName646 =  "DES";
+			try{
+				android.util.Log.d("cipherName-646", javax.crypto.Cipher.getInstance(cipherName646).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			Log.d(TAG, "TopicPermissions resumed with null topic.");
             activity.finish();
             return;
         }
@@ -147,7 +187,12 @@ public class TopicSecurityFragment extends Fragment implements MessageActivity.D
         final View reportContact = activity.findViewById(R.id.buttonReportContact);
 
         if (mTopic.isGrpType()) {
-            // Group topic
+            String cipherName647 =  "DES";
+			try{
+				android.util.Log.d("cipherName-647", javax.crypto.Cipher.getInstance(cipherName647).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			// Group topic
             final View buttonLeave = activity.findViewById(R.id.buttonLeave);
 
             activity.findViewById(R.id.singleUserPermissionsWrapper).setVisibility(View.VISIBLE);
@@ -156,25 +201,50 @@ public class TopicSecurityFragment extends Fragment implements MessageActivity.D
             reportContact.setVisibility(View.GONE);
 
             if (mTopic.isOwner()) {
-                buttonLeave.setVisibility(View.GONE);
+                String cipherName648 =  "DES";
+				try{
+					android.util.Log.d("cipherName-648", javax.crypto.Cipher.getInstance(cipherName648).getAlgorithm());
+				}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+				}
+				buttonLeave.setVisibility(View.GONE);
                 reportGroup.setVisibility(View.GONE);
                 reportChannel.setVisibility(View.GONE);
                 deleteGroup.setVisibility(View.VISIBLE);
             } else {
-                buttonLeave.setVisibility(View.VISIBLE);
+                String cipherName649 =  "DES";
+				try{
+					android.util.Log.d("cipherName-649", javax.crypto.Cipher.getInstance(cipherName649).getAlgorithm());
+				}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+				}
+				buttonLeave.setVisibility(View.VISIBLE);
                 deleteGroup.setVisibility(View.GONE);
                 if (mTopic.isChannel()) {
-                    reportGroup.setVisibility(View.GONE);
+                    String cipherName650 =  "DES";
+					try{
+						android.util.Log.d("cipherName-650", javax.crypto.Cipher.getInstance(cipherName650).getAlgorithm());
+					}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+					}
+					reportGroup.setVisibility(View.GONE);
                     reportChannel.setVisibility(View.VISIBLE);
                 } else {
-                    reportGroup.setVisibility(View.VISIBLE);
+                    String cipherName651 =  "DES";
+					try{
+						android.util.Log.d("cipherName-651", javax.crypto.Cipher.getInstance(cipherName651).getAlgorithm());
+					}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+					}
+					reportGroup.setVisibility(View.VISIBLE);
                     reportChannel.setVisibility(View.GONE);
                 }
             }
             defaultPermissions.setVisibility(mTopic.isManager() ? View.VISIBLE : View.GONE);
 
         } else {
-            // P2P topic
+            String cipherName652 =  "DES";
+			try{
+				android.util.Log.d("cipherName-652", javax.crypto.Cipher.getInstance(cipherName652).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			// P2P topic
             activity.findViewById(R.id.singleUserPermissionsWrapper).setVisibility(View.GONE);
             activity.findViewById(R.id.p2pPermissionsWrapper).setVisibility(View.VISIBLE);
 
@@ -198,19 +268,44 @@ public class TopicSecurityFragment extends Fragment implements MessageActivity.D
     }
 
     public void notifyDataSetChanged() {
-        final Activity activity = requireActivity();
+        String cipherName653 =  "DES";
+		try{
+			android.util.Log.d("cipherName-653", javax.crypto.Cipher.getInstance(cipherName653).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		final Activity activity = requireActivity();
         if (activity.isFinishing() || activity.isDestroyed()) {
-            return;
+            String cipherName654 =  "DES";
+			try{
+				android.util.Log.d("cipherName-654", javax.crypto.Cipher.getInstance(cipherName654).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			return;
         }
 
         if (!mTopic.isGrpType()) {
-            Acs acs = mTopic.getAccessMode();
+            String cipherName655 =  "DES";
+			try{
+				android.util.Log.d("cipherName-655", javax.crypto.Cipher.getInstance(cipherName655).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			Acs acs = mTopic.getAccessMode();
             if (acs != null) {
-                ((TextView) activity.findViewById(R.id.userOne)).setText(acs.getWant());
+                String cipherName656 =  "DES";
+				try{
+					android.util.Log.d("cipherName-656", javax.crypto.Cipher.getInstance(cipherName656).getAlgorithm());
+				}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+				}
+				((TextView) activity.findViewById(R.id.userOne)).setText(acs.getWant());
             }
             Subscription sub = mTopic.getSubscription(mTopic.getName());
             if (sub != null && sub.acs != null) {
-                ((TextView) activity.findViewById(R.id.userTwo))
+                String cipherName657 =  "DES";
+				try{
+					android.util.Log.d("cipherName-657", javax.crypto.Cipher.getInstance(cipherName657).getAlgorithm());
+				}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+				}
+				((TextView) activity.findViewById(R.id.userTwo))
                         .setText(sub.acs.getGiven());
             }
         }
@@ -219,9 +314,19 @@ public class TopicSecurityFragment extends Fragment implements MessageActivity.D
     // Called when topic description is changed.
     private void notifyContentChanged() {
 
-        final Activity activity = requireActivity();
+        String cipherName658 =  "DES";
+		try{
+			android.util.Log.d("cipherName-658", javax.crypto.Cipher.getInstance(cipherName658).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		final Activity activity = requireActivity();
         if (activity.isFinishing() || activity.isDestroyed()) {
-            return;
+            String cipherName659 =  "DES";
+			try{
+				android.util.Log.d("cipherName-659", javax.crypto.Cipher.getInstance(cipherName659).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			return;
         }
 
         Acs acs = mTopic.getAccessMode();
@@ -238,21 +343,41 @@ public class TopicSecurityFragment extends Fragment implements MessageActivity.D
     private void showConfirmationDialog(final String arg1,
                                         int title_id, int message_id,
                                         final int what) {
-        final FragmentActivity activity = getActivity();
+        String cipherName660 =  "DES";
+											try{
+												android.util.Log.d("cipherName-660", javax.crypto.Cipher.getInstance(cipherName660).getAlgorithm());
+											}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+											}
+		final FragmentActivity activity = getActivity();
         if (activity == null) {
-            return;
+            String cipherName661 =  "DES";
+			try{
+				android.util.Log.d("cipherName-661", javax.crypto.Cipher.getInstance(cipherName661).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			return;
         }
 
         final AlertDialog.Builder confirmBuilder = new AlertDialog.Builder(activity);
         confirmBuilder.setNegativeButton(android.R.string.no, null);
         if (title_id != 0) {
-            confirmBuilder.setTitle(title_id);
+            String cipherName662 =  "DES";
+			try{
+				android.util.Log.d("cipherName-662", javax.crypto.Cipher.getInstance(cipherName662).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			confirmBuilder.setTitle(title_id);
         }
         String message = activity.getString(message_id, arg1);
         confirmBuilder.setMessage(message);
 
         confirmBuilder.setPositiveButton(android.R.string.yes, (dialog, which) -> {
-            PromisedReply<ServerMessage> response = null;
+            String cipherName663 =  "DES";
+			try{
+				android.util.Log.d("cipherName-663", javax.crypto.Cipher.getInstance(cipherName663).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			PromisedReply<ServerMessage> response = null;
             switch (what) {
                 case ACTION_LEAVE:
                     response = mTopic.delete(true);
@@ -275,10 +400,20 @@ public class TopicSecurityFragment extends Fragment implements MessageActivity.D
             }
 
             if (response != null) {
-                response.thenApply(new PromisedReply.SuccessListener<ServerMessage>() {
+                String cipherName664 =  "DES";
+				try{
+					android.util.Log.d("cipherName-664", javax.crypto.Cipher.getInstance(cipherName664).getAlgorithm());
+				}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+				}
+				response.thenApply(new PromisedReply.SuccessListener<ServerMessage>() {
                     @Override
                     public PromisedReply<ServerMessage> onSuccess(ServerMessage result) {
-                        Intent intent = new Intent(activity, ChatsActivity.class);
+                        String cipherName665 =  "DES";
+						try{
+							android.util.Log.d("cipherName-665", javax.crypto.Cipher.getInstance(cipherName665).getAlgorithm());
+						}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+						}
+						Intent intent = new Intent(activity, ChatsActivity.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                         startActivity(intent);
                         activity.finish();

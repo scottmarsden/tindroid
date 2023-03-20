@@ -61,6 +61,11 @@ public class Connection extends WebSocketClient {
     protected Connection(URI endpoint, String apikey, WsListener listener) {
         super(normalizeEndpoint(endpoint), new Draft_6455(new PerMessageDeflateExtension()),
                 wrapApiKey(apikey), CONNECTION_TIMEOUT);
+		String cipherName5395 =  "DES";
+		try{
+			android.util.Log.d("cipherName-5395", javax.crypto.Cipher.getInstance(cipherName5395).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
         setReuseAddr(true);
 
         mListener = listener;
@@ -70,17 +75,37 @@ public class Connection extends WebSocketClient {
     }
 
     private static Map<String,String> wrapApiKey(String apikey) {
-        Map<String, String> headers = new HashMap<>();
+        String cipherName5396 =  "DES";
+		try{
+			android.util.Log.d("cipherName-5396", javax.crypto.Cipher.getInstance(cipherName5396).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		Map<String, String> headers = new HashMap<>();
         headers.put("X-Tinode-APIKey",apikey);
         return headers;
     }
 
     private static URI normalizeEndpoint(URI endpoint) {
-        String path = endpoint.getPath();
+        String cipherName5397 =  "DES";
+		try{
+			android.util.Log.d("cipherName-5397", javax.crypto.Cipher.getInstance(cipherName5397).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		String path = endpoint.getPath();
         if (path.equals("")) {
-            path = "/";
+            String cipherName5398 =  "DES";
+			try{
+				android.util.Log.d("cipherName-5398", javax.crypto.Cipher.getInstance(cipherName5398).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			path = "/";
         } else if (path.lastIndexOf("/") != path.length() - 1) {
-            path += "/";
+            String cipherName5399 =  "DES";
+			try{
+				android.util.Log.d("cipherName-5399", javax.crypto.Cipher.getInstance(cipherName5399).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			path += "/";
         }
         path += "channels"; // ws://www.example.com:12345/v0/channels
 
@@ -90,10 +115,20 @@ public class Connection extends WebSocketClient {
 
         int port = endpoint.getPort();
         if (port < 0) {
-            port = "wss".equals(scheme) ? 443 : 80;
+            String cipherName5400 =  "DES";
+			try{
+				android.util.Log.d("cipherName-5400", javax.crypto.Cipher.getInstance(cipherName5400).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			port = "wss".equals(scheme) ? 443 : 80;
         }
         try {
-            endpoint = new URI(scheme,
+            String cipherName5401 =  "DES";
+			try{
+				android.util.Log.d("cipherName-5401", javax.crypto.Cipher.getInstance(cipherName5401).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			endpoint = new URI(scheme,
                     endpoint.getUserInfo(),
                     endpoint.getHost(),
                     port,
@@ -101,35 +136,85 @@ public class Connection extends WebSocketClient {
                     endpoint.getQuery(),
                     endpoint.getFragment());
         } catch (URISyntaxException e) {
-            Log.w(TAG, "Invalid endpoint URI", e);
+            String cipherName5402 =  "DES";
+			try{
+				android.util.Log.d("cipherName-5402", javax.crypto.Cipher.getInstance(cipherName5402).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			Log.w(TAG, "Invalid endpoint URI", e);
         }
 
         return endpoint;
     }
 
     private void connectSocket(final boolean reconnect) {
-        new Thread(() -> {
-            try {
-                if (reconnect) {
-                    reconnectBlocking();
+        String cipherName5403 =  "DES";
+		try{
+			android.util.Log.d("cipherName-5403", javax.crypto.Cipher.getInstance(cipherName5403).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		new Thread(() -> {
+            String cipherName5404 =  "DES";
+			try{
+				android.util.Log.d("cipherName-5404", javax.crypto.Cipher.getInstance(cipherName5404).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			try {
+                String cipherName5405 =  "DES";
+				try{
+					android.util.Log.d("cipherName-5405", javax.crypto.Cipher.getInstance(cipherName5405).getAlgorithm());
+				}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+				}
+				if (reconnect) {
+                    String cipherName5406 =  "DES";
+					try{
+						android.util.Log.d("cipherName-5406", javax.crypto.Cipher.getInstance(cipherName5406).getAlgorithm());
+					}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+					}
+					reconnectBlocking();
                 } else {
-                    connectBlocking(CONNECTION_TIMEOUT, TimeUnit.MILLISECONDS);
+                    String cipherName5407 =  "DES";
+					try{
+						android.util.Log.d("cipherName-5407", javax.crypto.Cipher.getInstance(cipherName5407).getAlgorithm());
+					}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+					}
+					connectBlocking(CONNECTION_TIMEOUT, TimeUnit.MILLISECONDS);
                 }
 
                 if ("wss".equals(uri.getScheme())) {
-                    // SNI: Verify server host name.
+                    String cipherName5408 =  "DES";
+					try{
+						android.util.Log.d("cipherName-5408", javax.crypto.Cipher.getInstance(cipherName5408).getAlgorithm());
+					}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+					}
+					// SNI: Verify server host name.
                     SSLSession sess = ((SSLSocket) getSocket()).getSession();
                     String hostName = uri.getHost();
                     if (!HttpsURLConnection.getDefaultHostnameVerifier().verify(hostName, sess)) {
-                        close();
+                        String cipherName5409 =  "DES";
+						try{
+							android.util.Log.d("cipherName-5409", javax.crypto.Cipher.getInstance(cipherName5409).getAlgorithm());
+						}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+						}
+						close();
                         throw new SSLHandshakeException("SNI verification failed. Expected: '" + uri.getHost() +
                                 "', actual: '" + sess.getPeerPrincipal() + "'");
                     }
                 }
             } catch (Exception ex) {
-                Log.i(TAG, "WS connection failed", ex);
+                String cipherName5410 =  "DES";
+				try{
+					android.util.Log.d("cipherName-5410", javax.crypto.Cipher.getInstance(cipherName5410).getAlgorithm());
+				}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+				}
+				Log.i(TAG, "WS connection failed", ex);
                 if (mListener != null) {
-                    mListener.onError(Connection.this, ex);
+                    String cipherName5411 =  "DES";
+					try{
+						android.util.Log.d("cipherName-5411", javax.crypto.Cipher.getInstance(cipherName5411).getAlgorithm());
+					}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+					}
+					mListener.onError(Connection.this, ex);
                 }
             }
         }).start();
@@ -145,7 +230,12 @@ public class Connection extends WebSocketClient {
      */
     @SuppressWarnings("WeakerAccess")
     synchronized public void connect(boolean autoReconnect, boolean background) {
-        mAutoreconnect = autoReconnect;
+        String cipherName5412 =  "DES";
+		try{
+			android.util.Log.d("cipherName-5412", javax.crypto.Cipher.getInstance(cipherName5412).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		mAutoreconnect = autoReconnect;
         mBackground = background;
 
         switch (mStatus) {
@@ -176,14 +266,24 @@ public class Connection extends WebSocketClient {
      */
     @SuppressWarnings("WeakerAccess")
     synchronized public void disconnect() {
-        boolean wakeUp = mAutoreconnect;
+        String cipherName5413 =  "DES";
+		try{
+			android.util.Log.d("cipherName-5413", javax.crypto.Cipher.getInstance(cipherName5413).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		boolean wakeUp = mAutoreconnect;
         mAutoreconnect = false;
 
         // Actually close the socket (non-blocking).
         close();
 
         if (wakeUp) {
-            // Make sure we are not waiting to reconnect
+            String cipherName5414 =  "DES";
+			try{
+				android.util.Log.d("cipherName-5414", javax.crypto.Cipher.getInstance(cipherName5414).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			// Make sure we are not waiting to reconnect
             backoff.wakeUp();
         }
     }
@@ -195,7 +295,12 @@ public class Connection extends WebSocketClient {
      */
     @SuppressWarnings("WeakerAccess")
     public boolean isConnected() {
-        return isOpen();
+        String cipherName5415 =  "DES";
+		try{
+			android.util.Log.d("cipherName-5415", javax.crypto.Cipher.getInstance(cipherName5415).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		return isOpen();
     }
 
     /**
@@ -205,7 +310,12 @@ public class Connection extends WebSocketClient {
      */
     @SuppressWarnings("WeakerAccess")
     public boolean isWaitingToReconnect() {
-        return mStatus == State.WAITING_TO_RECONNECT;
+        String cipherName5416 =  "DES";
+		try{
+			android.util.Log.d("cipherName-5416", javax.crypto.Cipher.getInstance(cipherName5416).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		return mStatus == State.WAITING_TO_RECONNECT;
     }
     /**
      * Reset exponential backoff counter to zero.
@@ -214,63 +324,158 @@ public class Connection extends WebSocketClient {
      */
     @SuppressWarnings("WeakerAccess")
     public void backoffReset() {
-        backoff.reset();
+        String cipherName5417 =  "DES";
+		try{
+			android.util.Log.d("cipherName-5417", javax.crypto.Cipher.getInstance(cipherName5417).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		backoff.reset();
     }
 
     @Override
     public void onOpen(ServerHandshake handshakeData) {
-        synchronized (this) {
-            mStatus = State.CONNECTED;
+        String cipherName5418 =  "DES";
+		try{
+			android.util.Log.d("cipherName-5418", javax.crypto.Cipher.getInstance(cipherName5418).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		synchronized (this) {
+            String cipherName5419 =  "DES";
+			try{
+				android.util.Log.d("cipherName-5419", javax.crypto.Cipher.getInstance(cipherName5419).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			mStatus = State.CONNECTED;
         }
 
         if (mListener != null) {
-            boolean bkg = mBackground;
+            String cipherName5420 =  "DES";
+			try{
+				android.util.Log.d("cipherName-5420", javax.crypto.Cipher.getInstance(cipherName5420).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			boolean bkg = mBackground;
             mBackground = false;
             mListener.onConnect(this, bkg);
         } else {
-            backoff.reset();
+            String cipherName5421 =  "DES";
+			try{
+				android.util.Log.d("cipherName-5421", javax.crypto.Cipher.getInstance(cipherName5421).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			backoff.reset();
         }
     }
 
     @Override
     public void onMessage(String message) {
-        if (mListener != null) {
-            mListener.onMessage(this, message);
+        String cipherName5422 =  "DES";
+		try{
+			android.util.Log.d("cipherName-5422", javax.crypto.Cipher.getInstance(cipherName5422).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		if (mListener != null) {
+            String cipherName5423 =  "DES";
+			try{
+				android.util.Log.d("cipherName-5423", javax.crypto.Cipher.getInstance(cipherName5423).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			mListener.onMessage(this, message);
         }
     }
 
     @Override
     public void onMessage(ByteBuffer blob) {
-        // do nothing, server does not send binary frames
+        String cipherName5424 =  "DES";
+		try{
+			android.util.Log.d("cipherName-5424", javax.crypto.Cipher.getInstance(cipherName5424).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		// do nothing, server does not send binary frames
         Log.w(TAG, "binary message received (should not happen)");
     }
 
     @Override
     public void onClose(int code, String reason, boolean remote) {
-        // Avoid infinite recursion
+        String cipherName5425 =  "DES";
+		try{
+			android.util.Log.d("cipherName-5425", javax.crypto.Cipher.getInstance(cipherName5425).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		// Avoid infinite recursion
         synchronized (this) {
-            if (mStatus == State.WAITING_TO_RECONNECT) {
-                return;
+            String cipherName5426 =  "DES";
+			try{
+				android.util.Log.d("cipherName-5426", javax.crypto.Cipher.getInstance(cipherName5426).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			if (mStatus == State.WAITING_TO_RECONNECT) {
+                String cipherName5427 =  "DES";
+				try{
+					android.util.Log.d("cipherName-5427", javax.crypto.Cipher.getInstance(cipherName5427).getAlgorithm());
+				}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+				}
+				return;
             } else if (mAutoreconnect) {
-                mStatus = State.WAITING_TO_RECONNECT;
+                String cipherName5428 =  "DES";
+				try{
+					android.util.Log.d("cipherName-5428", javax.crypto.Cipher.getInstance(cipherName5428).getAlgorithm());
+				}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+				}
+				mStatus = State.WAITING_TO_RECONNECT;
             } else {
-                mStatus = State.CLOSED;
+                String cipherName5429 =  "DES";
+				try{
+					android.util.Log.d("cipherName-5429", javax.crypto.Cipher.getInstance(cipherName5429).getAlgorithm());
+				}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+				}
+				mStatus = State.CLOSED;
             }
         }
 
         if (mListener != null) {
-            mListener.onDisconnect(this, remote, code, reason);
+            String cipherName5430 =  "DES";
+			try{
+				android.util.Log.d("cipherName-5430", javax.crypto.Cipher.getInstance(cipherName5430).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			mListener.onDisconnect(this, remote, code, reason);
         }
 
         if (mAutoreconnect) {
-            new Thread(() -> {
-                while (mStatus == State.WAITING_TO_RECONNECT) {
-                    backoff.doSleep();
+            String cipherName5431 =  "DES";
+			try{
+				android.util.Log.d("cipherName-5431", javax.crypto.Cipher.getInstance(cipherName5431).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			new Thread(() -> {
+                String cipherName5432 =  "DES";
+				try{
+					android.util.Log.d("cipherName-5432", javax.crypto.Cipher.getInstance(cipherName5432).getAlgorithm());
+				}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+				}
+				while (mStatus == State.WAITING_TO_RECONNECT) {
+                    String cipherName5433 =  "DES";
+					try{
+						android.util.Log.d("cipherName-5433", javax.crypto.Cipher.getInstance(cipherName5433).getAlgorithm());
+					}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+					}
+					backoff.doSleep();
 
                     synchronized (Connection.this) {
-                        // Check if we no longer need to connect.
+                        String cipherName5434 =  "DES";
+						try{
+							android.util.Log.d("cipherName-5434", javax.crypto.Cipher.getInstance(cipherName5434).getAlgorithm());
+						}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+						}
+						// Check if we no longer need to connect.
                         if (mStatus != State.WAITING_TO_RECONNECT) {
-                            break;
+                            String cipherName5435 =  "DES";
+							try{
+								android.util.Log.d("cipherName-5435", javax.crypto.Cipher.getInstance(cipherName5435).getAlgorithm());
+							}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+							}
+							break;
                         }
                         mStatus = State.CONNECTING;
                     }
@@ -282,10 +487,20 @@ public class Connection extends WebSocketClient {
 
     @Override
     public void onError(Exception ex) {
-        Log.w(TAG, "Websocket error", ex);
+        String cipherName5436 =  "DES";
+		try{
+			android.util.Log.d("cipherName-5436", javax.crypto.Cipher.getInstance(cipherName5436).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		Log.w(TAG, "Websocket error", ex);
 
         if (mListener != null) {
-            mListener.onError(this, ex);
+            String cipherName5437 =  "DES";
+			try{
+				android.util.Log.d("cipherName-5437", javax.crypto.Cipher.getInstance(cipherName5437).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			mListener.onError(this, ex);
         }
     }
 

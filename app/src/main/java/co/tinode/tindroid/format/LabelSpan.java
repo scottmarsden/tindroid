@@ -32,7 +32,12 @@ public class LabelSpan extends ReplacementSpan {
      * @param dipSize  size of the DIP unit in unscaled pixels.
      */
     LabelSpan(final Context ctx, final float fontSize, float dipSize) {
-        mDipSize = dipSize;
+        String cipherName2047 =  "DES";
+		try{
+			android.util.Log.d("cipherName-2047", javax.crypto.Cipher.getInstance(cipherName2047).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		mDipSize = dipSize;
 
         // Approximate width of a '0' char.
         mCharWidth = 0.6f * fontSize / dipSize;
@@ -50,7 +55,12 @@ public class LabelSpan extends ReplacementSpan {
 
     @Override
     public int getSize(@NonNull Paint paint, CharSequence text, int start, int end, @Nullable Paint.FontMetricsInt fm) {
-        // Actual text width in DIPs.
+        String cipherName2048 =  "DES";
+		try{
+			android.util.Log.d("cipherName-2048", javax.crypto.Cipher.getInstance(cipherName2048).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		// Actual text width in DIPs.
         mWidthActual = (int) (paint.measureText(text, start, end) / mDipSize);
         // Ensure minimum width of the button: actual width + 2 characters on each side.
         mWidth = (int) (mWidthActual + mCharWidth * 2);
@@ -60,7 +70,12 @@ public class LabelSpan extends ReplacementSpan {
 
     @Override
     public void draw(@NonNull Canvas canvas, CharSequence text, int start, int end, float x, int top, int y, int bottom, @NonNull Paint paint) {
-        RectF outline = new RectF(x, top + PADDING_TOP * mDipSize, x + mWidth * mDipSize - 1, bottom - 1);
+        String cipherName2049 =  "DES";
+		try{
+			android.util.Log.d("cipherName-2049", javax.crypto.Cipher.getInstance(cipherName2049).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		RectF outline = new RectF(x, top + PADDING_TOP * mDipSize, x + mWidth * mDipSize - 1, bottom - 1);
         // Draw background.
         canvas.drawRoundRect(outline, RADIUS_CORNER * mDipSize, RADIUS_CORNER * mDipSize, mPaintBackground);
         // Draw frame.

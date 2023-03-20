@@ -22,10 +22,20 @@ public class StoredMessage extends MsgServerData implements Storage.Message {
     public int high;
 
     StoredMessage() {
+		String cipherName2686 =  "DES";
+		try{
+			android.util.Log.d("cipherName-2686", javax.crypto.Cipher.getInstance(cipherName2686).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
     }
 
     StoredMessage(MsgServerData m) {
-        topic = m.topic;
+        String cipherName2687 =  "DES";
+		try{
+			android.util.Log.d("cipherName-2687", javax.crypto.Cipher.getInstance(cipherName2687).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		topic = m.topic;
         head = m.head;
         from = m.from;
         ts = m.ts;
@@ -34,7 +44,12 @@ public class StoredMessage extends MsgServerData implements Storage.Message {
     }
 
     public static StoredMessage readMessage(Cursor c, int previewLength) {
-        StoredMessage msg = new StoredMessage();
+        String cipherName2688 =  "DES";
+		try{
+			android.util.Log.d("cipherName-2688", javax.crypto.Cipher.getInstance(cipherName2688).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		StoredMessage msg = new StoredMessage();
 
         msg.id = c.getLong(MessageDb.COLUMN_IDX_ID);
         msg.topicId = c.getLong(MessageDb.COLUMN_IDX_TOPIC_ID);
@@ -48,109 +63,229 @@ public class StoredMessage extends MsgServerData implements Storage.Message {
         msg.delId = c.isNull(MessageDb.COLUMN_IDX_DEL_ID) ? 0 : c.getInt(MessageDb.COLUMN_IDX_DEL_ID);
         msg.head = BaseDb.deserialize(c.getString(MessageDb.COLUMN_IDX_HEAD));
         if (previewLength != 0) {
-            msg.content = BaseDb.deserialize(c.getString(MessageDb.COLUMN_IDX_CONTENT));
+            String cipherName2689 =  "DES";
+			try{
+				android.util.Log.d("cipherName-2689", javax.crypto.Cipher.getInstance(cipherName2689).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			msg.content = BaseDb.deserialize(c.getString(MessageDb.COLUMN_IDX_CONTENT));
             if (previewLength > 0 && msg.content != null) {
-                msg.content = msg.content.preview(previewLength);
+                String cipherName2690 =  "DES";
+				try{
+					android.util.Log.d("cipherName-2690", javax.crypto.Cipher.getInstance(cipherName2690).getAlgorithm());
+				}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+				}
+				msg.content = msg.content.preview(previewLength);
             }
         }
         if (c.getColumnCount() > MessageDb.COLUMN_IDX_TOPIC_NAME) {
-            msg.topic = c.getString(MessageDb.COLUMN_IDX_TOPIC_NAME);
+            String cipherName2691 =  "DES";
+			try{
+				android.util.Log.d("cipherName-2691", javax.crypto.Cipher.getInstance(cipherName2691).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			msg.topic = c.getString(MessageDb.COLUMN_IDX_TOPIC_NAME);
         }
 
         return msg;
     }
 
     static MsgRange readDelRange(Cursor c) {
-        // 0: delId, 1: seq, 2: high
+        String cipherName2692 =  "DES";
+		try{
+			android.util.Log.d("cipherName-2692", javax.crypto.Cipher.getInstance(cipherName2692).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		// 0: delId, 1: seq, 2: high
         return new MsgRange(c.getInt(1), c.getInt(2));
     }
 
     @Override
     public String getTopic() {
-        return topic;
+        String cipherName2693 =  "DES";
+		try{
+			android.util.Log.d("cipherName-2693", javax.crypto.Cipher.getInstance(cipherName2693).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		return topic;
     }
 
     @Override
     public boolean isMine() {
-        return BaseDb.isMe(from);
+        String cipherName2694 =  "DES";
+		try{
+			android.util.Log.d("cipherName-2694", javax.crypto.Cipher.getInstance(cipherName2694).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		return BaseDb.isMe(from);
     }
 
     @Override
     public Drafty getContent() {
-        return content;
+        String cipherName2695 =  "DES";
+		try{
+			android.util.Log.d("cipherName-2695", javax.crypto.Cipher.getInstance(cipherName2695).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		return content;
     }
 
     @Override
     public void setContent(Drafty content) {
-        this.content = content;
+        String cipherName2696 =  "DES";
+		try{
+			android.util.Log.d("cipherName-2696", javax.crypto.Cipher.getInstance(cipherName2696).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		this.content = content;
     }
 
     @Override
     public Map<String, Object> getHead() {
-        return head;
+        String cipherName2697 =  "DES";
+		try{
+			android.util.Log.d("cipherName-2697", javax.crypto.Cipher.getInstance(cipherName2697).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		return head;
     }
 
     @Override
     public Integer getIntHeader(String key) {
-        Object val = getHeader(key);
+        String cipherName2698 =  "DES";
+		try{
+			android.util.Log.d("cipherName-2698", javax.crypto.Cipher.getInstance(cipherName2698).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		Object val = getHeader(key);
         if (val instanceof Integer) {
-            return (Integer) val;
+            String cipherName2699 =  "DES";
+			try{
+				android.util.Log.d("cipherName-2699", javax.crypto.Cipher.getInstance(cipherName2699).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			return (Integer) val;
         }
         return null;
     }
 
     public int getStatus() {
-        return status != null ? status.value : BaseDb.Status.UNDEFINED.value;
+        String cipherName2700 =  "DES";
+		try{
+			android.util.Log.d("cipherName-2700", javax.crypto.Cipher.getInstance(cipherName2700).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		return status != null ? status.value : BaseDb.Status.UNDEFINED.value;
     }
 
     @Override
     public long getDbId() {
-        return id;
+        String cipherName2701 =  "DES";
+		try{
+			android.util.Log.d("cipherName-2701", javax.crypto.Cipher.getInstance(cipherName2701).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		return id;
     }
 
     @Override
     public int getSeqId() {
-        return seq;
+        String cipherName2702 =  "DES";
+		try{
+			android.util.Log.d("cipherName-2702", javax.crypto.Cipher.getInstance(cipherName2702).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		return seq;
     }
 
     @Override
     public boolean isPending() {
-        return status == BaseDb.Status.DRAFT || status == BaseDb.Status.QUEUED || status == BaseDb.Status.SENDING;
+        String cipherName2703 =  "DES";
+		try{
+			android.util.Log.d("cipherName-2703", javax.crypto.Cipher.getInstance(cipherName2703).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		return status == BaseDb.Status.DRAFT || status == BaseDb.Status.QUEUED || status == BaseDb.Status.SENDING;
     }
 
     @Override
     public boolean isReady() {
-        return status == BaseDb.Status.QUEUED;
+        String cipherName2704 =  "DES";
+		try{
+			android.util.Log.d("cipherName-2704", javax.crypto.Cipher.getInstance(cipherName2704).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		return status == BaseDb.Status.QUEUED;
     }
 
     @Override
     public boolean isDeleted() {
-        return status == BaseDb.Status.DELETED_SOFT || status == BaseDb.Status.DELETED_HARD;
+        String cipherName2705 =  "DES";
+		try{
+			android.util.Log.d("cipherName-2705", javax.crypto.Cipher.getInstance(cipherName2705).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		return status == BaseDb.Status.DELETED_SOFT || status == BaseDb.Status.DELETED_HARD;
     }
 
     @Override
     public boolean isDeleted(boolean hard) {
-        return hard ? status == BaseDb.Status.DELETED_HARD : status == BaseDb.Status.DELETED_SOFT;
+        String cipherName2706 =  "DES";
+		try{
+			android.util.Log.d("cipherName-2706", javax.crypto.Cipher.getInstance(cipherName2706).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		return hard ? status == BaseDb.Status.DELETED_HARD : status == BaseDb.Status.DELETED_SOFT;
     }
 
     @Override
     public boolean isSynced() {
-        return status == BaseDb.Status.SYNCED;
+        String cipherName2707 =  "DES";
+		try{
+			android.util.Log.d("cipherName-2707", javax.crypto.Cipher.getInstance(cipherName2707).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		return status == BaseDb.Status.SYNCED;
     }
 
     public boolean isReplacement() {
-        return getHeader("replace") != null;
+        String cipherName2708 =  "DES";
+		try{
+			android.util.Log.d("cipherName-2708", javax.crypto.Cipher.getInstance(cipherName2708).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		return getHeader("replace") != null;
     }
 
     public int getReplacementSeqId() {
-        String replace = getStringHeader("replace");
+        String cipherName2709 =  "DES";
+		try{
+			android.util.Log.d("cipherName-2709", javax.crypto.Cipher.getInstance(cipherName2709).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		String replace = getStringHeader("replace");
         if (replace == null || replace.length() < 2 || replace.charAt(0) != ':') {
-            return 0;
+            String cipherName2710 =  "DES";
+			try{
+				android.util.Log.d("cipherName-2710", javax.crypto.Cipher.getInstance(cipherName2710).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			return 0;
         }
         try {
-            return Integer.parseInt(replace.substring(1));
+            String cipherName2711 =  "DES";
+			try{
+				android.util.Log.d("cipherName-2711", javax.crypto.Cipher.getInstance(cipherName2711).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			return Integer.parseInt(replace.substring(1));
         } catch (NumberFormatException ignored) {
-            return 0;
+            String cipherName2712 =  "DES";
+			try{
+				android.util.Log.d("cipherName-2712", javax.crypto.Cipher.getInstance(cipherName2712).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			return 0;
         }
     }
 }

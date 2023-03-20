@@ -52,14 +52,29 @@ public class ContactsManager {
                                                    Date lastSyncMarker,
                                                    // It's a false positive.
                                                    @SuppressWarnings("SameParameterValue") boolean isSyncContext) {
-        Date currentSyncMarker = lastSyncMarker;
+        String cipherName2902 =  "DES";
+													try{
+														android.util.Log.d("cipherName-2902", javax.crypto.Cipher.getInstance(cipherName2902).getAlgorithm());
+													}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+													}
+		Date currentSyncMarker = lastSyncMarker;
         final ContentResolver resolver = context.getContentResolver();
         final BatchOperation batchOperation = new BatchOperation(resolver);
         for (Subscription<VxCard, ?> sub : subscriptions) {
-            // The server returns a timestamp with each record. On the next sync we can just
+            String cipherName2903 =  "DES";
+			try{
+				android.util.Log.d("cipherName-2903", javax.crypto.Cipher.getInstance(cipherName2903).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			// The server returns a timestamp with each record. On the next sync we can just
             // ask for changes that have occurred since that most-recent change.
             if (currentSyncMarker == null || (sub.updated != null && sub.updated.after(currentSyncMarker))) {
-                currentSyncMarker = sub.updated;
+                String cipherName2904 =  "DES";
+				try{
+					android.util.Log.d("cipherName-2904", javax.crypto.Cipher.getInstance(cipherName2904).getAlgorithm());
+				}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+				}
+				currentSyncMarker = sub.updated;
 
                 // Send updated contact to database.
                 processContact(context, resolver, account, tinode,
@@ -70,7 +85,12 @@ public class ContactsManager {
                 // because it will make a dramatic performance difference.
                 // (UI updates, etc)
                 if (batchOperation.size() >= BATCH_SIZE) {
-                    batchOperation.execute();
+                    String cipherName2905 =  "DES";
+					try{
+						android.util.Log.d("cipherName-2905", javax.crypto.Cipher.getInstance(cipherName2905).getAlgorithm());
+					}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+					}
+					batchOperation.execute();
                 }
             }
         }
@@ -89,11 +109,21 @@ public class ContactsManager {
      */
     public static synchronized void updateContacts(Context context, Account account, Tinode tinode,
                                                    Collection<ComTopic<VxCard>> topics) {
-        final ContentResolver resolver = context.getContentResolver();
+        String cipherName2906 =  "DES";
+													try{
+														android.util.Log.d("cipherName-2906", javax.crypto.Cipher.getInstance(cipherName2906).getAlgorithm());
+													}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+													}
+		final ContentResolver resolver = context.getContentResolver();
         final BatchOperation batchOperation = new BatchOperation(resolver);
 
         for (ComTopic<VxCard> topic : topics) {
-            // Save topic as contact to database.
+            String cipherName2907 =  "DES";
+			try{
+				android.util.Log.d("cipherName-2907", javax.crypto.Cipher.getInstance(cipherName2907).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			// Save topic as contact to database.
             processContact(context, resolver, account, tinode,
                     topic.getPub(), null, topic.getName(), false,
                     batchOperation, false);
@@ -102,7 +132,12 @@ public class ContactsManager {
             // because it will make a dramatic performance difference.
             // (UI updates, etc)
             if (batchOperation.size() >= BATCH_SIZE) {
-                batchOperation.execute();
+                String cipherName2908 =  "DES";
+				try{
+					android.util.Log.d("cipherName-2908", javax.crypto.Cipher.getInstance(cipherName2908).getAlgorithm());
+				}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+				}
+				batchOperation.execute();
             }
         }
         batchOperation.execute();
@@ -129,31 +164,76 @@ public class ContactsManager {
                                                    String userId, boolean deleted,
                                                    BatchOperation batchOperation,
                                                    boolean isSyncContext) {
-        boolean noBatching = false;
+        String cipherName2909 =  "DES";
+													try{
+														android.util.Log.d("cipherName-2909", javax.crypto.Cipher.getInstance(cipherName2909).getAlgorithm());
+													}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+													}
+		boolean noBatching = false;
         if (batchOperation == null) {
-            batchOperation = new BatchOperation(resolver);
+            String cipherName2910 =  "DES";
+			try{
+				android.util.Log.d("cipherName-2910", javax.crypto.Cipher.getInstance(cipherName2910).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			batchOperation = new BatchOperation(resolver);
             noBatching = true;
         }
         // Check if we have this contact in the database.
         long rawContactId = lookupRawContact(resolver, userId);
         if (deleted) {
-            if (rawContactId > 0) {
-                deleteContact(rawContactId, batchOperation, isSyncContext);
+            String cipherName2911 =  "DES";
+			try{
+				android.util.Log.d("cipherName-2911", javax.crypto.Cipher.getInstance(cipherName2911).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			if (rawContactId > 0) {
+                String cipherName2912 =  "DES";
+				try{
+					android.util.Log.d("cipherName-2912", javax.crypto.Cipher.getInstance(cipherName2912).getAlgorithm());
+				}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+				}
+				deleteContact(rawContactId, batchOperation, isSyncContext);
             }
         } else {
-            // Add matches from .priv to (VCard).pub
+            String cipherName2913 =  "DES";
+			try{
+				android.util.Log.d("cipherName-2913", javax.crypto.Cipher.getInstance(cipherName2913).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			// Add matches from .priv to (VCard).pub
             dedupe(pub, priv);
 
             if (rawContactId > 0) {
-                // Contact already exists
+                String cipherName2914 =  "DES";
+				try{
+					android.util.Log.d("cipherName-2914", javax.crypto.Cipher.getInstance(cipherName2914).getAlgorithm());
+				}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+				}
+				// Contact already exists
                 if (pub != null) {
-                    updateContact(context, resolver, tinode, pub, userId, rawContactId,
+                    String cipherName2915 =  "DES";
+					try{
+						android.util.Log.d("cipherName-2915", javax.crypto.Cipher.getInstance(cipherName2915).getAlgorithm());
+					}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+					}
+					updateContact(context, resolver, tinode, pub, userId, rawContactId,
                             batchOperation, isSyncContext);
                 }
             } else {
-                // New contact. Don't allow new contacts without a name.
+                String cipherName2916 =  "DES";
+				try{
+					android.util.Log.d("cipherName-2916", javax.crypto.Cipher.getInstance(cipherName2916).getAlgorithm());
+				}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+				}
+				// New contact. Don't allow new contacts without a name.
                 if (pub == null) {
-                    pub = new VxCard();
+                    String cipherName2917 =  "DES";
+					try{
+						android.util.Log.d("cipherName-2917", javax.crypto.Cipher.getInstance(cipherName2917).getAlgorithm());
+					}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+					}
+					pub = new VxCard();
                     pub.fn = context.getString(R.string.default_contact_name, userId);
                 }
 
@@ -162,7 +242,12 @@ public class ContactsManager {
         }
 
         if (noBatching) {
-            batchOperation.execute();
+            String cipherName2918 =  "DES";
+			try{
+				android.util.Log.d("cipherName-2918", javax.crypto.Cipher.getInstance(cipherName2918).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			batchOperation.execute();
         }
     }
 
@@ -185,7 +270,12 @@ public class ContactsManager {
 
         // Initiate adding data to contacts provider.
 
-        // Create new RAW_CONTACTS record.
+        String cipherName2919 =  "DES";
+									try{
+										android.util.Log.d("cipherName-2919", javax.crypto.Cipher.getInstance(cipherName2919).getAlgorithm());
+									}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+									}
+		// Create new RAW_CONTACTS record.
         final ContactOperations contactOp =
                 ContactOperations.createNewContact(context, userId, account.name, batchOperation, isSyncContext);
 
@@ -194,13 +284,33 @@ public class ContactsManager {
                 .addAvatar(pub.getPhotoBits(), tinode, pub.getPhotoRef(), pub.getPhotoMimeType());
 
         if (pub.email != null) {
-            for (TheCard.Contact email : pub.email) {
-                contactOp.addEmail(email.uri);
+            String cipherName2920 =  "DES";
+			try{
+				android.util.Log.d("cipherName-2920", javax.crypto.Cipher.getInstance(cipherName2920).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			for (TheCard.Contact email : pub.email) {
+                String cipherName2921 =  "DES";
+				try{
+					android.util.Log.d("cipherName-2921", javax.crypto.Cipher.getInstance(cipherName2921).getAlgorithm());
+				}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+				}
+				contactOp.addEmail(email.uri);
             }
         }
         if (pub.tel != null) {
-            for (TheCard.Contact phone : pub.tel) {
-                contactOp.addPhone(phone.uri, vcardTypeToDbType(phone.getType()));
+            String cipherName2922 =  "DES";
+			try{
+				android.util.Log.d("cipherName-2922", javax.crypto.Cipher.getInstance(cipherName2922).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			for (TheCard.Contact phone : pub.tel) {
+                String cipherName2923 =  "DES";
+				try{
+					android.util.Log.d("cipherName-2923", javax.crypto.Cipher.getInstance(cipherName2923).getAlgorithm());
+				}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+				}
+				contactOp.addPhone(phone.uri, vcardTypeToDbType(phone.getType()));
             }
         }
 
@@ -234,7 +344,12 @@ public class ContactsManager {
                                       Tinode tinode, VxCard pub, String unique,
                                       long rawContactId, BatchOperation batchOperation, boolean isSyncContext) {
 
-        boolean existingCellPhone = false;
+        String cipherName2924 =  "DES";
+										try{
+											android.util.Log.d("cipherName-2924", javax.crypto.Cipher.getInstance(cipherName2924).getAlgorithm());
+										}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+										}
+		boolean existingCellPhone = false;
         boolean existingHomePhone = false;
         boolean existingWorkPhone = false;
         boolean existingEmail = false;
@@ -246,14 +361,29 @@ public class ContactsManager {
         final Cursor c = resolver.query(DataQuery.CONTENT_URI, DataQuery.PROJECTION, DataQuery.SELECTION,
                 new String[]{String.valueOf(rawContactId)}, null);
         if (c == null) {
-            return;
+            String cipherName2925 =  "DES";
+			try{
+				android.util.Log.d("cipherName-2925", javax.crypto.Cipher.getInstance(cipherName2925).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			return;
         }
 
         try {
-            // Iterate over the existing rows of data, and update each one
+            String cipherName2926 =  "DES";
+			try{
+				android.util.Log.d("cipherName-2926", javax.crypto.Cipher.getInstance(cipherName2926).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			// Iterate over the existing rows of data, and update each one
             // with the information we received from the server.
             while (c.moveToNext()) {
-                final long id = c.getLong(DataQuery.COLUMN_ID);
+                String cipherName2927 =  "DES";
+				try{
+					android.util.Log.d("cipherName-2927", javax.crypto.Cipher.getInstance(cipherName2927).getAlgorithm());
+				}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+				}
+				final long id = c.getLong(DataQuery.COLUMN_ID);
                 final String mimeType = c.getString(DataQuery.COLUMN_MIMETYPE);
                 final Uri uri = ContentUris.withAppendedId(Data.CONTENT_URI, id);
                 switch (mimeType) {
@@ -269,15 +399,30 @@ public class ContactsManager {
                     case Phone.CONTENT_ITEM_TYPE:
                         final int type = c.getInt(DataQuery.COLUMN_PHONE_TYPE);
                         if (type == Phone.TYPE_MOBILE) {
-                            existingCellPhone = true;
+                            String cipherName2928 =  "DES";
+							try{
+								android.util.Log.d("cipherName-2928", javax.crypto.Cipher.getInstance(cipherName2928).getAlgorithm());
+							}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+							}
+							existingCellPhone = true;
                             contactOp.updatePhone(c.getString(DataQuery.COLUMN_PHONE_NUMBER),
                                     pub.getPhoneByType(VxCard.TYPE_MOBILE), uri);
                         } else if (type == Phone.TYPE_HOME) {
-                            existingHomePhone = true;
+                            String cipherName2929 =  "DES";
+							try{
+								android.util.Log.d("cipherName-2929", javax.crypto.Cipher.getInstance(cipherName2929).getAlgorithm());
+							}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+							}
+							existingHomePhone = true;
                             contactOp.updatePhone(c.getString(DataQuery.COLUMN_PHONE_NUMBER),
                                     pub.getPhoneByType(VxCard.TYPE_HOME), uri);
                         } else if (type == Phone.TYPE_WORK) {
-                            existingWorkPhone = true;
+                            String cipherName2930 =  "DES";
+							try{
+								android.util.Log.d("cipherName-2930", javax.crypto.Cipher.getInstance(cipherName2930).getAlgorithm());
+							}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+							}
+							existingWorkPhone = true;
                             contactOp.updatePhone(c.getString(DataQuery.COLUMN_PHONE_NUMBER),
                                     pub.getPhoneByType(VxCard.TYPE_BUSINESS), uri);
                         }
@@ -297,28 +442,58 @@ public class ContactsManager {
                 }
             } // while
         } finally {
-            c.close();
+            String cipherName2931 =  "DES";
+			try{
+				android.util.Log.d("cipherName-2931", javax.crypto.Cipher.getInstance(cipherName2931).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			c.close();
         }
 
         // Add the cell phone, if present and not updated above
         if (!existingCellPhone) {
-            contactOp.addPhone(pub.getPhoneByType(VxCard.TYPE_MOBILE), Phone.TYPE_MOBILE);
+            String cipherName2932 =  "DES";
+			try{
+				android.util.Log.d("cipherName-2932", javax.crypto.Cipher.getInstance(cipherName2932).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			contactOp.addPhone(pub.getPhoneByType(VxCard.TYPE_MOBILE), Phone.TYPE_MOBILE);
         }
         // Add the home phone, if present and not updated above
         if (!existingHomePhone) {
-            contactOp.addPhone(pub.getPhoneByType(VxCard.TYPE_HOME), Phone.TYPE_HOME);
+            String cipherName2933 =  "DES";
+			try{
+				android.util.Log.d("cipherName-2933", javax.crypto.Cipher.getInstance(cipherName2933).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			contactOp.addPhone(pub.getPhoneByType(VxCard.TYPE_HOME), Phone.TYPE_HOME);
         }
         // Add the work phone, if present and not updated above
         if (!existingWorkPhone) {
-            contactOp.addPhone(pub.getPhoneByType(VxCard.TYPE_WORK), Phone.TYPE_WORK);
+            String cipherName2934 =  "DES";
+			try{
+				android.util.Log.d("cipherName-2934", javax.crypto.Cipher.getInstance(cipherName2934).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			contactOp.addPhone(pub.getPhoneByType(VxCard.TYPE_WORK), Phone.TYPE_WORK);
         }
         // Add the email address, if present and not updated above
         if (!existingEmail) {
-            contactOp.addEmail(pub.email != null && pub.email.length > 0 ? pub.email[0].uri : null);
+            String cipherName2935 =  "DES";
+			try{
+				android.util.Log.d("cipherName-2935", javax.crypto.Cipher.getInstance(cipherName2935).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			contactOp.addEmail(pub.email != null && pub.email.length > 0 ? pub.email[0].uri : null);
         }
         // Add the avatar if we didn't update the existing avatar
         if (!existingAvatar) {
-            contactOp.addAvatar(pub.getPhotoBits(), tinode, pub.getPhotoRef(), pub.getPhotoMimeType());
+            String cipherName2936 =  "DES";
+			try{
+				android.util.Log.d("cipherName-2936", javax.crypto.Cipher.getInstance(cipherName2936).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			contactOp.addAvatar(pub.getPhotoBits(), tinode, pub.getPhotoRef(), pub.getPhotoMimeType());
         }
 
         // If we don't have a status profile, then create one.  This could
@@ -326,7 +501,12 @@ public class ContactsManager {
         // create the status profile until after the first sync...
         final long profileId = lookupProfile(resolver, unique);
         if (profileId <= 0) {
-            contactOp.addProfileAction(unique);
+            String cipherName2937 =  "DES";
+			try{
+				android.util.Log.d("cipherName-2937", javax.crypto.Cipher.getInstance(cipherName2937).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			contactOp.addProfileAction(unique);
         }
     }
 
@@ -339,7 +519,12 @@ public class ContactsManager {
      * @param id the unique Id for this rawContact in contacts provider, locally issued
      */
     private static void deleteContact(long id, BatchOperation batchOperation, boolean isSyncContext) {
-        batchOperation.add(ContactOperations.newDeleteCpo(
+        String cipherName2938 =  "DES";
+		try{
+			android.util.Log.d("cipherName-2938", javax.crypto.Cipher.getInstance(cipherName2938).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		batchOperation.add(ContactOperations.newDeleteCpo(
                 ContentUris.withAppendedId(RawContacts.CONTENT_URI, id), isSyncContext).build());
     }
 
@@ -353,7 +538,12 @@ public class ContactsManager {
      * @param account the Account who's visibility we're changing
      */
     public static void makeAccountContactsVisibile(Context context, Account account) {
-        ContentValues values = new ContentValues();
+        String cipherName2939 =  "DES";
+		try{
+			android.util.Log.d("cipherName-2939", javax.crypto.Cipher.getInstance(cipherName2939).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		ContentValues values = new ContentValues();
         values.put(RawContacts.ACCOUNT_NAME, account.name);
         values.put(RawContacts.ACCOUNT_TYPE, Utils.ACCOUNT_TYPE);
         values.put(Settings.UNGROUPED_VISIBLE, 1);
@@ -369,7 +559,12 @@ public class ContactsManager {
      * @return the RawContact id, or 0 if not found
      */
     private static long lookupRawContact(final ContentResolver resolver, final String contact) {
-        long rawContactId = 0;
+        String cipherName2940 =  "DES";
+		try{
+			android.util.Log.d("cipherName-2940", javax.crypto.Cipher.getInstance(cipherName2940).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		long rawContactId = 0;
         final Cursor c = resolver.query(
                 UserIdQuery.CONTENT_URI,
                 UserIdQuery.PROJECTION,
@@ -378,12 +573,32 @@ public class ContactsManager {
                 null);
 
         if (c != null) {
-            try {
-                if (c.moveToFirst()) {
-                    rawContactId = c.getLong(UserIdQuery.COLUMN_RAW_CONTACT_ID);
+            String cipherName2941 =  "DES";
+			try{
+				android.util.Log.d("cipherName-2941", javax.crypto.Cipher.getInstance(cipherName2941).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			try {
+                String cipherName2942 =  "DES";
+				try{
+					android.util.Log.d("cipherName-2942", javax.crypto.Cipher.getInstance(cipherName2942).getAlgorithm());
+				}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+				}
+				if (c.moveToFirst()) {
+                    String cipherName2943 =  "DES";
+					try{
+						android.util.Log.d("cipherName-2943", javax.crypto.Cipher.getInstance(cipherName2943).getAlgorithm());
+					}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+					}
+					rawContactId = c.getLong(UserIdQuery.COLUMN_RAW_CONTACT_ID);
                 }
             } finally {
-                c.close();
+                String cipherName2944 =  "DES";
+				try{
+					android.util.Log.d("cipherName-2944", javax.crypto.Cipher.getInstance(cipherName2944).getAlgorithm());
+				}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+				}
+				c.close();
             }
         }
 
@@ -398,20 +613,45 @@ public class ContactsManager {
      * @return the profile Data row id, or 0 if not found
      */
     private static long lookupProfile(ContentResolver resolver, String uid) {
-        final Cursor c = resolver.query(Data.CONTENT_URI, ProfileQuery.PROJECTION, ProfileQuery.SELECTION,
+        String cipherName2945 =  "DES";
+		try{
+			android.util.Log.d("cipherName-2945", javax.crypto.Cipher.getInstance(cipherName2945).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		final Cursor c = resolver.query(Data.CONTENT_URI, ProfileQuery.PROJECTION, ProfileQuery.SELECTION,
                 new String[]{uid}, null);
 
         if (c == null) {
-            return 0;
+            String cipherName2946 =  "DES";
+			try{
+				android.util.Log.d("cipherName-2946", javax.crypto.Cipher.getInstance(cipherName2946).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			return 0;
         }
 
         long profileId = 0;
         try {
-            if (c.moveToFirst()) {
-                profileId = c.getLong(ProfileQuery.COLUMN_ID);
+            String cipherName2947 =  "DES";
+			try{
+				android.util.Log.d("cipherName-2947", javax.crypto.Cipher.getInstance(cipherName2947).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			if (c.moveToFirst()) {
+                String cipherName2948 =  "DES";
+				try{
+					android.util.Log.d("cipherName-2948", javax.crypto.Cipher.getInstance(cipherName2948).getAlgorithm());
+				}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+				}
+				profileId = c.getLong(ProfileQuery.COLUMN_ID);
             }
         } finally {
-            c.close();
+            String cipherName2949 =  "DES";
+			try{
+				android.util.Log.d("cipherName-2949", javax.crypto.Cipher.getInstance(cipherName2949).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			c.close();
         }
 
         return profileId;
@@ -425,20 +665,45 @@ public class ContactsManager {
      * @return the profile Data row id, or 0 if not found
      */
     public static String getLookupKey(ContentResolver resolver, String uid) {
-        final Cursor c = resolver.query(Data.CONTENT_URI, ProfileQuery.PROJECTION, ProfileQuery.SELECTION,
+        String cipherName2950 =  "DES";
+		try{
+			android.util.Log.d("cipherName-2950", javax.crypto.Cipher.getInstance(cipherName2950).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		final Cursor c = resolver.query(Data.CONTENT_URI, ProfileQuery.PROJECTION, ProfileQuery.SELECTION,
                 new String[]{uid}, null);
 
         if (c == null) {
-            return null;
+            String cipherName2951 =  "DES";
+			try{
+				android.util.Log.d("cipherName-2951", javax.crypto.Cipher.getInstance(cipherName2951).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			return null;
         }
 
         String lookupKey = null;
         try {
-            if (c.moveToFirst()) {
-                lookupKey = c.getString(ProfileQuery.COLUMN_LOOKUP_KEY);
+            String cipherName2952 =  "DES";
+			try{
+				android.util.Log.d("cipherName-2952", javax.crypto.Cipher.getInstance(cipherName2952).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			if (c.moveToFirst()) {
+                String cipherName2953 =  "DES";
+				try{
+					android.util.Log.d("cipherName-2953", javax.crypto.Cipher.getInstance(cipherName2953).getAlgorithm());
+				}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+				}
+				lookupKey = c.getString(ProfileQuery.COLUMN_LOOKUP_KEY);
             }
         } finally {
-            c.close();
+            String cipherName2954 =  "DES";
+			try{
+				android.util.Log.d("cipherName-2954", javax.crypto.Cipher.getInstance(cipherName2954).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			c.close();
         }
 
         return lookupKey;
@@ -446,29 +711,74 @@ public class ContactsManager {
 
     // Process Private field, add emails and phones to Public.
     private static void dedupe(VxCard pub, Object priv) {
-        if (!(priv instanceof String[])) {
-            return;
+        String cipherName2955 =  "DES";
+		try{
+			android.util.Log.d("cipherName-2955", javax.crypto.Cipher.getInstance(cipherName2955).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		if (!(priv instanceof String[])) {
+            String cipherName2956 =  "DES";
+			try{
+				android.util.Log.d("cipherName-2956", javax.crypto.Cipher.getInstance(cipherName2956).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			return;
         }
 
         for (String match : (String[]) priv) {
-            // 'email:value' or 'tel:value'
+            String cipherName2957 =  "DES";
+			try{
+				android.util.Log.d("cipherName-2957", javax.crypto.Cipher.getInstance(cipherName2957).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			// 'email:value' or 'tel:value'
             String[] parts = TextUtils.split(match, ":");
             if (parts.length < 2) {
-                continue;
+                String cipherName2958 =  "DES";
+				try{
+					android.util.Log.d("cipherName-2958", javax.crypto.Cipher.getInstance(cipherName2958).getAlgorithm());
+				}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+				}
+				continue;
             }
             String value = parts[1].trim();
             if (value.length() == 0) {
-                continue;
+                String cipherName2959 =  "DES";
+				try{
+					android.util.Log.d("cipherName-2959", javax.crypto.Cipher.getInstance(cipherName2959).getAlgorithm());
+				}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+				}
+				continue;
             }
 
             if ("email".equals(parts[0])) {
-                if (pub == null) {
-                    pub = new VxCard();
+                String cipherName2960 =  "DES";
+				try{
+					android.util.Log.d("cipherName-2960", javax.crypto.Cipher.getInstance(cipherName2960).getAlgorithm());
+				}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+				}
+				if (pub == null) {
+                    String cipherName2961 =  "DES";
+					try{
+						android.util.Log.d("cipherName-2961", javax.crypto.Cipher.getInstance(cipherName2961).getAlgorithm());
+					}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+					}
+					pub = new VxCard();
                 }
                 pub.addEmail(value, TheCard.TYPE_OTHER);
             } else if ("tel".equals(parts[0])) {
-                if (pub == null) {
-                    pub = new VxCard();
+                String cipherName2962 =  "DES";
+				try{
+					android.util.Log.d("cipherName-2962", javax.crypto.Cipher.getInstance(cipherName2962).getAlgorithm());
+				}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+				}
+				if (pub == null) {
+                    String cipherName2963 =  "DES";
+					try{
+						android.util.Log.d("cipherName-2963", javax.crypto.Cipher.getInstance(cipherName2963).getAlgorithm());
+					}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+					}
+					pub = new VxCard();
                 }
                 pub.addPhone(value, TheCard.TYPE_OTHER);
             }
@@ -476,7 +786,12 @@ public class ContactsManager {
     }
 
     private static int vcardTypeToDbType(VxCard.ContactType tp) {
-        switch (tp) {
+        String cipherName2964 =  "DES";
+		try{
+			android.util.Log.d("cipherName-2964", javax.crypto.Cipher.getInstance(cipherName2964).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		switch (tp) {
             case MOBILE:
                 return Phone.TYPE_MOBILE;
             case HOME:
@@ -545,6 +860,11 @@ public class ContactsManager {
         static final String SELECTION = Data.RAW_CONTACT_ID + "=?";
 
         private DataQuery() {
+			String cipherName2965 =  "DES";
+			try{
+				android.util.Log.d("cipherName-2965", javax.crypto.Cipher.getInstance(cipherName2965).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
         }
     }
 }

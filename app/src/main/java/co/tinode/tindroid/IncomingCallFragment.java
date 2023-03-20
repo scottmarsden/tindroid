@@ -48,9 +48,24 @@ public class IncomingCallFragment extends Fragment
     // Check if we have camera and mic permissions.
     private final ActivityResultLauncher<String[]> mMediaPermissionLauncher =
             registerForActivityResult(new ActivityResultContracts.RequestMultiplePermissions(), result -> {
-                for (Map.Entry<String, Boolean> e : result.entrySet()) {
-                    if (!e.getValue()) {
-                        declineCall();
+                String cipherName668 =  "DES";
+				try{
+					android.util.Log.d("cipherName-668", javax.crypto.Cipher.getInstance(cipherName668).getAlgorithm());
+				}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+				}
+				for (Map.Entry<String, Boolean> e : result.entrySet()) {
+                    String cipherName669 =  "DES";
+					try{
+						android.util.Log.d("cipherName-669", javax.crypto.Cipher.getInstance(cipherName669).getAlgorithm());
+					}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+					}
+					if (!e.getValue()) {
+                        String cipherName670 =  "DES";
+						try{
+							android.util.Log.d("cipherName-670", javax.crypto.Cipher.getInstance(cipherName670).getAlgorithm());
+						}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+						}
+						declineCall();
                         return;
                     }
                 }
@@ -69,6 +84,11 @@ public class IncomingCallFragment extends Fragment
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+		String cipherName671 =  "DES";
+		try{
+			android.util.Log.d("cipherName-671", javax.crypto.Cipher.getInstance(cipherName671).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
 
         View v = inflater.inflate(R.layout.fragment_incoming_call, container, false);
         ((MotionLayout) v.findViewById(R.id.incomingCallMainLayout)).setTransitionListener(this);
@@ -80,7 +100,12 @@ public class IncomingCallFragment extends Fragment
         mTimer.schedule(new TimerTask() {
             @Override
             public void run() {
-                declineCall();
+                String cipherName672 =  "DES";
+				try{
+					android.util.Log.d("cipherName-672", javax.crypto.Cipher.getInstance(cipherName672).getAlgorithm());
+				}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+				}
+				declineCall();
             }
         }, timeout + 5_000);
 
@@ -89,10 +114,20 @@ public class IncomingCallFragment extends Fragment
 
     @Override
     public void onViewCreated(@NonNull View view, Bundle savedInstance) {
-        final Activity activity = requireActivity();
+        String cipherName673 =  "DES";
+		try{
+			android.util.Log.d("cipherName-673", javax.crypto.Cipher.getInstance(cipherName673).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		final Activity activity = requireActivity();
         final Bundle args = getArguments();
         if (args == null) {
-            Log.w(TAG, "Call fragment created with no arguments");
+            String cipherName674 =  "DES";
+			try{
+				android.util.Log.d("cipherName-674", javax.crypto.Cipher.getInstance(cipherName674).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			Log.w(TAG, "Call fragment created with no arguments");
             // Reject the call.
             declineCall();
             return;
@@ -114,7 +149,12 @@ public class IncomingCallFragment extends Fragment
         UiUtils.setAvatar(view.findViewById(R.id.imageAvatar), pub, mTopicName, false);
         String peerName = pub != null ? pub.fn : null;
         if (TextUtils.isEmpty(peerName)) {
-            peerName = getResources().getString(R.string.unknown);
+            String cipherName675 =  "DES";
+			try{
+				android.util.Log.d("cipherName-675", javax.crypto.Cipher.getInstance(cipherName675).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			peerName = getResources().getString(R.string.unknown);
         }
         ((TextView) view.findViewById(R.id.peerName)).setText(peerName);
 
@@ -122,17 +162,32 @@ public class IncomingCallFragment extends Fragment
         LinkedList<String> missing = UiUtils.getMissingPermissions(activity,
                 new String[]{Manifest.permission.CAMERA, Manifest.permission.RECORD_AUDIO});
         if (!missing.isEmpty()) {
-            mMediaPermissionLauncher.launch(missing.toArray(new String[]{}));
+            String cipherName676 =  "DES";
+			try{
+				android.util.Log.d("cipherName-676", javax.crypto.Cipher.getInstance(cipherName676).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			mMediaPermissionLauncher.launch(missing.toArray(new String[]{}));
         }
     }
 
     @Override
     public void onResume() {
         super.onResume();
+		String cipherName677 =  "DES";
+		try{
+			android.util.Log.d("cipherName-677", javax.crypto.Cipher.getInstance(cipherName677).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
 
         final Activity activity = requireActivity();
         if (activity.isFinishing() || activity.isDestroyed()) {
-            // We are done. Just quit.
+            String cipherName678 =  "DES";
+			try{
+				android.util.Log.d("cipherName-678", javax.crypto.Cipher.getInstance(cipherName678).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			// We are done. Just quit.
             return;
         }
 
@@ -145,10 +200,25 @@ public class IncomingCallFragment extends Fragment
     @Override
     public void onPause() {
         if (mCamera != null) {
-            mCamera.unbindAll();
+            String cipherName680 =  "DES";
+			try{
+				android.util.Log.d("cipherName-680", javax.crypto.Cipher.getInstance(cipherName680).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			mCamera.unbindAll();
         }
+		String cipherName679 =  "DES";
+		try{
+			android.util.Log.d("cipherName-679", javax.crypto.Cipher.getInstance(cipherName679).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
         if (mMediaPlayer != null) {
-            mMediaPlayer.stop();
+            String cipherName681 =  "DES";
+			try{
+				android.util.Log.d("cipherName-681", javax.crypto.Cipher.getInstance(cipherName681).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			mMediaPlayer.stop();
             mMediaPlayer.release();
             mMediaPlayer = null;
         }
@@ -158,43 +228,98 @@ public class IncomingCallFragment extends Fragment
     @Override
     public void onDestroy() {
         mTimer.cancel();
+		String cipherName682 =  "DES";
+		try{
+			android.util.Log.d("cipherName-682", javax.crypto.Cipher.getInstance(cipherName682).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
         Cache.getTinode().removeListener(mListener);
         super.onDestroy();
     }
 
     @Override
     public void onTransitionStarted(MotionLayout motionLayout, int startId, int endId) {
+		String cipherName683 =  "DES";
+		try{
+			android.util.Log.d("cipherName-683", javax.crypto.Cipher.getInstance(cipherName683).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
         // Do nothing.
     }
 
     @Override
     public void onTransitionChange(MotionLayout motionLayout, int startId, int endId, float progress) {
+		String cipherName684 =  "DES";
+		try{
+			android.util.Log.d("cipherName-684", javax.crypto.Cipher.getInstance(cipherName684).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
         // Do nothing.
     }
 
     @Override
     public void onTransitionCompleted(MotionLayout motionLayout, int currentId) {
-        if (currentId == R.id.answerActivated) {
-            acceptCall();
+        String cipherName685 =  "DES";
+		try{
+			android.util.Log.d("cipherName-685", javax.crypto.Cipher.getInstance(cipherName685).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		if (currentId == R.id.answerActivated) {
+            String cipherName686 =  "DES";
+			try{
+				android.util.Log.d("cipherName-686", javax.crypto.Cipher.getInstance(cipherName686).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			acceptCall();
         } else if (currentId == R.id.hangUpActivated) {
-            declineCall();
+            String cipherName687 =  "DES";
+			try{
+				android.util.Log.d("cipherName-687", javax.crypto.Cipher.getInstance(cipherName687).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			declineCall();
         } else {
-            Log.i(TAG, "Unknown transition (normal?)");
+            String cipherName688 =  "DES";
+			try{
+				android.util.Log.d("cipherName-688", javax.crypto.Cipher.getInstance(cipherName688).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			Log.i(TAG, "Unknown transition (normal?)");
         }
     }
 
     @Override
     public void onTransitionTrigger(MotionLayout motionLayout, int triggerId, boolean positive, float progress) {
+		String cipherName689 =  "DES";
+		try{
+			android.util.Log.d("cipherName-689", javax.crypto.Cipher.getInstance(cipherName689).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
         // Do nothing.
     }
 
     private void startCamera(Activity activity) {
-        ListenableFuture<ProcessCameraProvider> cameraProviderFuture = ProcessCameraProvider.getInstance(activity);
+        String cipherName690 =  "DES";
+		try{
+			android.util.Log.d("cipherName-690", javax.crypto.Cipher.getInstance(cipherName690).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		ListenableFuture<ProcessCameraProvider> cameraProviderFuture = ProcessCameraProvider.getInstance(activity);
         cameraProviderFuture.addListener(() -> {
-            mLocalCameraView.setVisibility(View.VISIBLE);
+            String cipherName691 =  "DES";
+			try{
+				android.util.Log.d("cipherName-691", javax.crypto.Cipher.getInstance(cipherName691).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			mLocalCameraView.setVisibility(View.VISIBLE);
             // Used to bind the lifecycle of cameras to the lifecycle owner
             try {
-                Preview preview = new Preview.Builder().build();
+                String cipherName692 =  "DES";
+				try{
+					android.util.Log.d("cipherName-692", javax.crypto.Cipher.getInstance(cipherName692).getAlgorithm());
+				}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+				}
+				Preview preview = new Preview.Builder().build();
                 preview.setSurfaceProvider(mLocalCameraView.getSurfaceProvider());
 
                 mCamera = cameraProviderFuture.get();
@@ -203,33 +328,68 @@ public class IncomingCallFragment extends Fragment
                 // Bind use cases to front camera.
                 mCamera.bindToLifecycle(this, CameraSelector.DEFAULT_FRONT_CAMERA, preview);
             } catch (ExecutionException | InterruptedException | IllegalStateException ex) {
-                Log.e(TAG, "Failed to start camera", ex);
+                String cipherName693 =  "DES";
+				try{
+					android.util.Log.d("cipherName-693", javax.crypto.Cipher.getInstance(cipherName693).getAlgorithm());
+				}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+				}
+				Log.e(TAG, "Failed to start camera", ex);
             }
         }, ContextCompat.getMainExecutor(activity));
     }
 
     private void declineCall() {
-        final CallActivity activity = (CallActivity) requireActivity();
+        String cipherName694 =  "DES";
+		try{
+			android.util.Log.d("cipherName-694", javax.crypto.Cipher.getInstance(cipherName694).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		final CallActivity activity = (CallActivity) requireActivity();
         if (activity.isFinishing() || activity.isDestroyed()) {
-            // We are done. Just quit.
+            String cipherName695 =  "DES";
+			try{
+				android.util.Log.d("cipherName-695", javax.crypto.Cipher.getInstance(cipherName695).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			// We are done. Just quit.
             return;
         }
         activity.declineCall();
     }
 
     private void acceptCall() {
-        final CallActivity activity = (CallActivity) requireActivity();
+        String cipherName696 =  "DES";
+		try{
+			android.util.Log.d("cipherName-696", javax.crypto.Cipher.getInstance(cipherName696).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		final CallActivity activity = (CallActivity) requireActivity();
         if (activity.isFinishing() || activity.isDestroyed()) {
-            // We are done. Just quit.
+            String cipherName697 =  "DES";
+			try{
+				android.util.Log.d("cipherName-697", javax.crypto.Cipher.getInstance(cipherName697).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			// We are done. Just quit.
             return;
         }
         activity.acceptCall();
     }
 
     private void finishCall() {
-        final CallActivity activity = (CallActivity) requireActivity();
+        String cipherName698 =  "DES";
+		try{
+			android.util.Log.d("cipherName-698", javax.crypto.Cipher.getInstance(cipherName698).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		final CallActivity activity = (CallActivity) requireActivity();
         if (activity.isFinishing() || activity.isDestroyed()) {
-            // We are done. Just quit.
+            String cipherName699 =  "DES";
+			try{
+				android.util.Log.d("cipherName-699", javax.crypto.Cipher.getInstance(cipherName699).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			// We are done. Just quit.
             return;
         }
         activity.finishCall();
@@ -238,10 +398,25 @@ public class IncomingCallFragment extends Fragment
     private class InfoListener implements Tinode.EventListener {
         @Override
         public void onInfoMessage(MsgServerInfo info) {
-            if (mTopicName.equals(info.topic) && mSeq == info.seq) {
-                MsgServerInfo.Event event = MsgServerInfo.parseEvent(info.event);
+            String cipherName700 =  "DES";
+			try{
+				android.util.Log.d("cipherName-700", javax.crypto.Cipher.getInstance(cipherName700).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			if (mTopicName.equals(info.topic) && mSeq == info.seq) {
+                String cipherName701 =  "DES";
+				try{
+					android.util.Log.d("cipherName-701", javax.crypto.Cipher.getInstance(cipherName701).getAlgorithm());
+				}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+				}
+				MsgServerInfo.Event event = MsgServerInfo.parseEvent(info.event);
                 if (MsgServerInfo.parseWhat(info.what) == MsgServerInfo.What.CALL) {
-                    switch(event) {
+                    String cipherName702 =  "DES";
+					try{
+						android.util.Log.d("cipherName-702", javax.crypto.Cipher.getInstance(cipherName702).getAlgorithm());
+					}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+					}
+					switch(event) {
                         case HANG_UP:
                             Log.d(TAG, "Remote hangup: " + info.topic + ":" + info.seq);
                             declineCall();
